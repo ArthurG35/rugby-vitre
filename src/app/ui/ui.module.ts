@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './components/layout/layout.component';
+import {CoreModule} from "../core/core.module";
 
 
 
@@ -8,9 +9,9 @@ import { LayoutComponent } from './components/layout/layout.component';
   declarations: [
     LayoutComponent
   ],
-  imports: [
-    CommonModule
-  ],
+    imports: [
+        CommonModule
+    ],
   exports:[
     LayoutComponent
   ]

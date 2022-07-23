@@ -5,13 +5,15 @@ import {RouterModule} from "@angular/router";
 import {TemplatesModule} from "../templates/templates.module";
 import {UiModule} from "../ui/ui.module";
 import { HomeComponent } from './components/home/home.component';
+import { NavComponent } from './components/nav/nav.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    NavComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { HomeComponent } from './components/home/home.component';
   exports:[
     HeaderComponent,
     HomeComponent,
-    UiModule
+    UiModule,
+    NavComponent
   ]
 })
 export class CoreModule { }
