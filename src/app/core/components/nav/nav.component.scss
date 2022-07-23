@@ -11,13 +11,21 @@ nav{padding: 15px 100px;
 ul{
   position: relative;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   li{
     list-style: none;
     position: relative;
     a{
-      font-size: 1em;
+      font-size: 1.7em;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      position: relative;
+      color: #ecf0f1;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
     }
   }
 }}
+
