@@ -1,7 +1,74 @@
-body{
+:root {
+  font-size: 62.5%;
+}
+
+body {
   font-size: 1.6rem;
   line-height: 1.3;
   color: var(--menu-font-color);
   font-family: var(--font-family);
   background-color: #27ae60;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+button {
+  outline: 0;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-transform: uppercase;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2.5rem;
+}
+
+h4 {
+  font-size: 2rem;
+}
+
+ul {
+  list-style: 0;
+}
+
+html {
+  background-color: var(--dark);
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: #ecf0f1;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(to right, var(--scroll-track-color) 0%, var(--scroll-track-color) 30%, var(--scroll-color) 60%, var(--body-bg-color) 61%, var(--body-bg-color) 100%);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-color);
 }

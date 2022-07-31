@@ -6,6 +6,7 @@ import {TemplatesModule} from "../templates/templates.module";
 import {UiModule} from "../ui/ui.module";
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -13,7 +14,8 @@ import { NavComponent } from './components/nav/nav.component';
   declarations: [
     HeaderComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { NavComponent } from './components/nav/nav.component';
     HeaderComponent,
     HomeComponent,
     UiModule,
-    NavComponent
+    NavComponent,
+    FooterComponent
   ]
 })
 export class CoreModule { }
