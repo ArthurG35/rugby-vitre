@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TemplateFullWidthComponent } from './template-full-width.component';
+import {TemplateFullWidthComponent} from './template-full-width.component';
 
 describe('TemplateFullWidthComponent', () => {
   let component: TemplateFullWidthComponent;
