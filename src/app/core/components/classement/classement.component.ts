@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-classement',
@@ -8,16 +7,13 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ClassementComponent implements OnInit {
 
-  constructor(private http: HttpClient) {
+  constructor() {
 
   }
 
   ngOnInit(): void {
-    this.http.get('/assets/php/request.php').subscribe(
-      res=>{console.log(res);
 
-      }
-    )}
+  }
 
 
 }
