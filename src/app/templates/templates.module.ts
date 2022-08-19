@@ -17,4 +17,5 @@ import {TemplateContainerComponent} from './components/template-container/templa
     TemplateContainerComponent
   ]
 })
-export class TemplatesModule { }
+export class TemplatesModule {
+}

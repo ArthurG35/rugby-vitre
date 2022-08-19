@@ -18,4 +18,5 @@ import {ClassementComponent} from "../core/components/classement/classement.comp
     ClassementComponent,
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

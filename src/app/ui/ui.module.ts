@@ -7,11 +7,12 @@ import {LayoutComponent} from './components/layout/layout.component';
   declarations: [
     LayoutComponent
   ],
-    imports: [
-        CommonModule
-    ],
-  exports:[
+  imports: [
+    CommonModule
+  ],
+  exports: [
     LayoutComponent
   ]
 })
-export class UiModule { }
+export class UiModule {
+}

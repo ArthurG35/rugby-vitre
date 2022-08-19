@@ -1,28 +1,35 @@
 @import "src/assets/styling/mediaqueries";
+
 footer {
   a {
     font-size: 1.2em;
     padding: 5px;
     color: #ecf0f1;
   }
+
   bottom: 0px;
   width: 100%;
   background-color: var(--menu-background);
   color: #ecf0f1;
+
   .main-content {
     display: flex;
+
     .box {
       flex-basis: calc(100% / 3);
       padding: 10px 20px;
+
       h2 {
         font-size: 1.6rem;
         font-weight: 700;
         text-transform: uppercase;
       }
+
       .content {
         font-size: 1.2rem;
         margin: 20px 0 0 0;
         position: relative;
+
         &:before {
           position: absolute;
           content: "";
@@ -31,52 +38,64 @@ footer {
           width: 100%;
           background-color: #151515;
         }
+
         &:after {
           position: absolute;
           content: "";
           height: 2px;
           width: 15%;
-          background: linear-gradient( 163deg, #2ecc71 0%, #27ae60 100%);
+          background: linear-gradient(163deg, #2ecc71 0%, #27ae60 100%);
           top: -10px;
         }
+
         .menu-nav {
           display: flex;
         }
+
         .categ {
           margin: 10px 0;
+
           span {
             font-size: 1.2em;
             cursor: pointer;
           }
         }
+
         .social {
           margin: 20px 0 0 0;
+
           a {
             padding: 0 2px;
+
             span {
               padding: 5px;
               line-height: 4rem;
             }
           }
         }
+
         p {
           text-align: justify;
         }
       }
     }
   }
+
   .bottom-copyright {
     .center-copyright {
       padding: 5px;
       text-align: center;
       font-size: 1.6rem;
       background-color: #151515;
+
       span {
         color: #656565;
         text-decoration: none;
+
         .name-copyright {
           color: var(--menu-color);
           text-decoration: none;
+
           .mention-copyright {
             text-decoration: none;
           }
@@ -95,11 +114,14 @@ span:hover {
   footer {
     position: relative;
     bottom: 0;
+
     .main-content {
       flex-wrap: wrap;
       flex-direction: column;
+
       .box {
         margin: 5px 0;
+
         a {
           font-size: 1em;
         }

@@ -8,9 +8,9 @@ describe('TemplateFullWidthComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TemplateFullWidthComponent ]
+      declarations: [TemplateFullWidthComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

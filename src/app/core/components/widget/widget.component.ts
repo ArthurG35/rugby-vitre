@@ -7,7 +7,8 @@ import {Component, OnInit} from '@angular/core';
 })
 export class WidgetComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
 

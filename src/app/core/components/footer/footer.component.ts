@@ -7,7 +7,8 @@ import {Component, OnInit} from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     let span_year = document.getElementById("year-copyright") as HTMLElement;

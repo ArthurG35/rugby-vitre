@@ -1,4 +1,5 @@
 @import "src/assets/styling/mediaqueries";
+
 nav {
   padding: 15px 100px;
   top: 0;
@@ -10,14 +11,17 @@ nav {
   -ms-transition: 0.6s;
   -o-transition: 0.6s;
   z-index: 1;
+
   ul {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+
     li {
       list-style: none;
       position: relative;
+
       a {
         font-size: 1.7em;
         text-transform: uppercase;
@@ -26,9 +30,11 @@ nav {
         text-decoration: none;
         margin: 0 15px;
         font-weight: bold;
+
         &:hover {
           color: #ecf0f1;
         }
+
         &::before {
           content: "";
           position: absolute;
@@ -41,6 +47,7 @@ nav {
           transform: scaleX(0);
           transition: transform 0.3s ease;
         }
+
         &:hover::before {
           transform: scaleX(1);
         }
@@ -48,10 +55,12 @@ nav {
     }
   }
 }
+
 .Scrolled {
   padding: 5px 100px;
   background-color: #2ecc71;
   position: fixed;
+
   ul {
     li {
       a {
