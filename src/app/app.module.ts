@@ -5,7 +5,6 @@ import {AppComponent} from './app.component';
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
-import {NameServiceService} from "./core/services/name-service.service";
 
 @NgModule({
   declarations: [
@@ -19,7 +18,6 @@ import {NameServiceService} from "./core/services/name-service.service";
     HttpClientModule
   ],
   providers: [
-    NameServiceService,
   ],
   bootstrap: [AppComponent]
 })
