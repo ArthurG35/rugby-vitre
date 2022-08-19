@@ -21,3 +21,11 @@ window.addEventListener("scroll", function () {
   var header = document.querySelector("nav");
   header.classList.toggle("Scrolled", window.scrollY > 0);
 })
+
+
+
+/*if(document.URL == (window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/")){
+  var element = document.getElementById("id-header");
+  element.classList.add("mystyle");
+}*/
+

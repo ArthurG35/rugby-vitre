@@ -6,17 +6,15 @@ import {ClassementComponent} from "../core/components/classement/classement.comp
 
 @NgModule({
   declarations: [
-    ClassementComponent
-
+    ClassementComponent,
   ],
   imports: [
-    CommonModule,
+    CommonModule
   ],
   exports: [
     CommonModule,
     TemplatesModule,
     ClassementComponent,
-  ]
+  ],
 })
-export class SharedModule {
-}
+export class SharedModule {}
