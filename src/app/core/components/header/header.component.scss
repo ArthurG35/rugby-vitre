@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 header {
-  background-image: url("/assets/images/background/header-background.jpg");
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 100vh;
   top: 0;
   left: 0;
   width: 100%;
   justify-content: space-between;
   align-items: center;
+}
+
+.main-page{
+  background-image: url("/assets/images/background/header-background.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }

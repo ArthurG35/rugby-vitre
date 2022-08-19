@@ -33,7 +33,7 @@ import {SharedModule} from "../shared/shared.module";
     NavComponent,
     FooterComponent,
     WidgetComponent,
-  ]
+  ],
 })
 export class CoreModule {
 }
