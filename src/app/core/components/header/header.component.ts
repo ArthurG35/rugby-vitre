@@ -11,12 +11,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(document.URL == (window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/")) {
-      const box = document.getElementById('id-header');
-      if (box != null) {
-        box.classList.add('main-page');
-      }
-    }
+
   }
 
 }

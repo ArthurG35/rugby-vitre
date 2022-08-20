@@ -11,6 +11,20 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+  }
+
+  test(active: boolean): void {
+    const header = document.getElementById('id-header');
+    if (active) {
+      if (header != null) {
+        header.classList.add('main-page');
+      }
+    } else {
+      if (header != null) {
+        header.classList.remove('main-page');
+      }
+    }
   }
 
 }

@@ -1,8 +1,13 @@
 <nav>
   <ul class="nav" id="id-nav">
-    <li><a class="selected" href="">Home</a></li>
-    <li><a href="equipes">Équipes</a></li>
-    <li><a href="partenaire">Partenaires</a></li>
-    <li><a href="boutique">Boutique</a></li>
+    <li><a [routerLink]="['/']" [routerLinkActive]="['link-Activate']" [routerLinkActiveOptions]="{exact:true}"
+           (isActiveChange)="this.test($event)">Home</a>
+    </li>
+    <li><a [routerLink]="['/', 'equipes']" [routerLinkActive]="['link-Activate']"
+           [routerLinkActiveOptions]="{exact:true}">Équipes</a></li>
+    <li><a [routerLink]="['/', 'equipes']" [routerLinkActive]="['link-Activate']"
+           [routerLinkActiveOptions]="{exact:true}">Partenaires</a></li>
+    <li><a [routerLink]="['/', 'equipes']" [routerLinkActive]="['link-Activate']"
+           [routerLinkActiveOptions]="{exact:true}">Boutique</a></li>
   </ul>
 </nav>

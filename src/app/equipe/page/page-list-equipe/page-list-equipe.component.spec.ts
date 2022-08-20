@@ -8,9 +8,9 @@ describe('PageListEquipeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageListEquipeComponent ]
+      declarations: [PageListEquipeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
