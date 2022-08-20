@@ -1,63 +1,76 @@
 img {
   max-width: 350px;
-}
+}.all-equipes {
+   background-image: url("/assets/images/background/equipe-background2.jpg");
+   background-position: center center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   min-height: 100vh;
 
-.equipe-cadre {
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 40px;
-  padding-left: 40px;
-  background-color: #ecf0f1;
-  h1 {
-    color: #2d3436;
-    padding-top: 40px;
-  }
-  .post {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    .joueur {
-      margin: 30px 60px;
-      font-size: 0;
-      background-color: #27ae60;
-      transition: all 0.5s 0s ease-in-out;
-      -webkit-transition: all 0.5s 0s ease-in-out;
-      -moz-transition: all 0.5s 0s ease-in-out;
-      -ms-transition: all 0.5s 0s ease-in-out;
-      -o-transition: all 0.5s 0s ease-in-out;
-      &:hover {
-        background-color: #2ecc71;
-      }
-      .info {
-        opacity: 0;
-        width: 100%;
-        height: calc(100% / 10);
-        position: relative;
-        top: calc(-100% / 10);
-        left: 0%;
-        background-color: rgba(0, 0, 0, 0.5);
-        transition: all 0.5s 0s ease-in-out;
-        -webkit-transition: all 0.5s 0s ease-in-out;
-        -moz-transition: all 0.5s 0s ease-in-out;
-        -ms-transition: all 0.5s 0s ease-in-out;
-        -o-transition: all 0.5s 0s ease-in-out;
-        display: flex;
-        flex-direction: row;
-        align-content: space-around;
-        justify-content: center;
-        align-items: center;
-        .NameAndAge {
-          font-size: initial;
-          position: absolute;
-          display: inline-block;
-          color: #ecf0f1;
-          font-weight: bold;
-        }
-      }
-      .info.hovered {
-        opacity: 1;
-      }
-    }
-  }
-}
+   .equipe-cadre {
+     margin-right: auto;
+     margin-left: auto;
+     padding-right: 40px;
+     padding-left: 40px;
+
+     h1 {
+       color: #ffffff;
+       padding-top: 40px;
+     }
+
+     .post {
+       display: flex;
+       flex-direction: row;
+       flex-wrap: wrap;
+       justify-content: center;
+
+       .joueur {
+         margin: 30px 60px;
+         font-size: 0;
+         background-color: #27ae60;
+         transition: all 0.5s 0s ease-in-out;
+         -webkit-transition: all 0.5s 0s ease-in-out;
+         -moz-transition: all 0.5s 0s ease-in-out;
+         -ms-transition: all 0.5s 0s ease-in-out;
+         -o-transition: all 0.5s 0s ease-in-out;
+
+         &:hover {
+           background-color: #2ecc71;
+         }
+
+         .info {
+           opacity: 0;
+           width: 100%;
+           height: calc(100% / 10);
+           position: relative;
+           top: calc(-100% / 10);
+           left: 0%;
+           background-color: rgba(0, 0, 0, 0.5);
+           transition: all 0.5s 0s ease-in-out;
+           -webkit-transition: all 0.5s 0s ease-in-out;
+           -moz-transition: all 0.5s 0s ease-in-out;
+           -ms-transition: all 0.5s 0s ease-in-out;
+           -o-transition: all 0.5s 0s ease-in-out;
+           display: flex;
+           flex-direction: row;
+           align-content: space-around;
+           justify-content: center;
+           align-items: center;
+
+           .NameAndAge {
+             font-size: initial;
+             position: absolute;
+             display: inline-block;
+             color: #ecf0f1;
+             font-weight: bold;
+           }
+         }
+
+         .info.hovered {
+           opacity: 1;
+         }
+       }
+     }
+   }
+ }
