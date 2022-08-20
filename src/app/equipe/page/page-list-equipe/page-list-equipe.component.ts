@@ -14,5 +14,12 @@ export class PageListEquipeComponent implements OnInit {
 
   }
 
+  hover(e : any){
+    e.path[0].children[1].classList.add("hovered");
+  }
+  unhover(e : any){
+    e.path[0].children[1].classList.remove("hovered");
+  }
+
 
 }

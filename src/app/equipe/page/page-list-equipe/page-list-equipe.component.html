@@ -2,13 +2,18 @@
   <div class="equipe-cadre">
     <h1>Première ligne</h1>
     <div class="post">
-      <div class="joueur">
+      <div class="joueur" (mouseenter)="hover($event)" (mouseleave)="unhover($event)">
         <img src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
         <div class="info">
           <div class="NameAndAge">Élie Coptère - 25 Ans</div>
         </div>
       </div>
-
+      <div class="joueur" (mouseenter)="hover($event)" (mouseleave)="unhover($event)">
+        <img src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
+        <div class="info">
+          <div class="NameAndAge">Élie Coptère - 25 Ans</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
