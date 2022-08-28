@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Observable} from "rxjs";
+import {JoueurI} from "../../../core/interfaces/joueur-i";
 
 @Component({
   selector: 'app-page-list-equipe',
@@ -6,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./page-list-equipe.component.scss']
 })
 export class PageListEquipeComponent implements OnInit {
+  @Input() employees$?: Observable<JoueurI[]>;
 
   constructor() {
   }
