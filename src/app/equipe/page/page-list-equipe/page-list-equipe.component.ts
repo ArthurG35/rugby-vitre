@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {JoueurI} from "../../../core/interfaces/joueur-i";
 import {JoueursService} from "../../services/joueurs.service";
@@ -9,7 +9,7 @@ import {JoueursService} from "../../services/joueurs.service";
   styleUrls: ['./page-list-equipe.component.scss']
 })
 export class PageListEquipeComponent implements OnInit {
-  @Input() joueurs$?: Observable<JoueurI[]>;
+  public joueurs$?: Observable<JoueurI[]>;
 
   constructor(private joueurService: JoueursService) {
   }

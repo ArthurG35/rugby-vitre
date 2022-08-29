@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<tr *ngFor="let joueur of (joueurs$)">
+<tr *ngFor="let joueur of (joueurs$ | async)">
   <td>{{joueur.id}}</td>
   <td>{{joueur.name}}</td>
   <td>{{joueur.age}}</td>

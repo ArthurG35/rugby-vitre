@@ -9,7 +9,7 @@ import {JoueurI} from "../../core/interfaces/joueur-i";
 })
 export class JoueursService {
 
-  private url:string=`${environment.apiUrl}/joueurs`;
+  private url:string=`${environment.host+environment.apiUrl}/joueurs`;
 
   constructor(private httpClient: HttpClient) { }
 
