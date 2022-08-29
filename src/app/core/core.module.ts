@@ -9,6 +9,7 @@ import {NavComponent} from './components/nav/nav.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {WidgetComponent} from './components/widget/widget.component';
 import {SharedModule} from "../shared/shared.module";
+import {BrowserModule} from "@angular/platform-browser";
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {SharedModule} from "../shared/shared.module";
     RouterModule,
     TemplatesModule,
     UiModule,
-    SharedModule
+    SharedModule,
+    BrowserModule,
   ],
   exports: [
     HeaderComponent,

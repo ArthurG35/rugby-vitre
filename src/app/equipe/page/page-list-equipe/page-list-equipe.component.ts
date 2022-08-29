@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {JoueurI} from "../../../core/interfaces/joueur-i";
+import {JoueursService} from "../../services/joueurs.service";
 
 @Component({
   selector: 'app-page-list-equipe',
@@ -8,13 +9,16 @@ import {JoueurI} from "../../../core/interfaces/joueur-i";
   styleUrls: ['./page-list-equipe.component.scss']
 })
 export class PageListEquipeComponent implements OnInit {
-  @Input() employees$?: Observable<JoueurI[]>;
+  public joueurs$?: Observable<JoueurI[]>;
 
-  constructor() {
+  constructor(private joueurService: JoueursService) {
   }
 
   ngOnInit(): void {
-
+    this.getAllJoueurs();
+  }
+  getAllJoueurs(): void {
+    this.joueurs$ = this.joueurService.getAllJoueurs();
   }
 
   hover(e : any){
