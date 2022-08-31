@@ -75,7 +75,8 @@
               "browserTarget": "rugby-vitre:build:production"
             },
             "development": {
-              "browserTarget": "rugby-vitre:build:development"
+              "browserTarget": "rugby-vitre:build:development",
+              "proxyConfig": "./proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

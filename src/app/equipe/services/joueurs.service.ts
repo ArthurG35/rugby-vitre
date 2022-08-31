@@ -14,6 +14,6 @@ export class JoueursService {
   constructor(private httpClient: HttpClient) { }
 
   getAllJoueurs():Observable<JoueurI[]>{
-    return this.httpClient.get<JoueurI[]>(this.url);
+    return this.httpClient.get<JoueurI[]>(this.url, { withCredentials: true });
   }
 }
