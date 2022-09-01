@@ -17,14 +17,16 @@ export class PageListEquipeComponent implements OnInit {
   ngOnInit(): void {
     this.getAllJoueurs();
   }
+
   getAllJoueurs(): void {
     this.joueurs$ = this.joueurService.getAllJoueurs();
   }
 
-  hover(e : any){
+  hover(e: any) {
     e.path[0].children[1].classList.add("hovered");
   }
-  unhover(e : any){
+
+  unhover(e: any) {
     e.path[0].children[1].classList.remove("hovered");
   }
 

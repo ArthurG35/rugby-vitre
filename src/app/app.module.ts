@@ -6,12 +6,11 @@ import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
-import {PageListEquipeComponent} from "./equipe/page/page-list-equipe/page-list-equipe.component";
+import {EquipeModule} from "./equipe/equipe.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageListEquipeComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,6 +19,7 @@ import {PageListEquipeComponent} from "./equipe/page/page-list-equipe/page-list-
     SharedModule,
     HttpClientModule,
     CommonModule,
+    EquipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

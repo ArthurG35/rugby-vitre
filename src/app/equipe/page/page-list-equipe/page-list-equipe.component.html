@@ -1,25 +1,16 @@
+<ng-container *ngIf="joueurs$"></ng-container>
+
 <div class="all-equipes">
   <div class="equipe-cadre">
     <h1>Première ligne</h1>
     <div class="post">
-      <div class="joueur" (mouseenter)="hover($event)" (mouseleave)="unhover($event)">
+      <div *ngFor="let joueur of (joueurs$ | async)" class="joueur" (mouseenter)="hover($event)"
+           (mouseleave)="unhover($event)">
         <img src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
         <div class="info">
-          <div class="NameAndAge">Élie Coptère - 25 Ans</div>
-        </div>
-      </div>
-      <div class="joueur" (mouseenter)="hover($event)" (mouseleave)="unhover($event)">
-        <img src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
-        <div class="info">
-          <div class="NameAndAge">Élie Coptère - 25 Ans</div>
+          <div class="NameAndAge">{{joueur.name}} - {{joueur.age}} Ans</div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<tr *ngFor="let joueur of (joueurs$ | async)">
-  <td>{{joueur.id}}</td>
-  <td>{{joueur.name}}</td>
-  <td>{{joueur.age}}</td>
-</tr>
