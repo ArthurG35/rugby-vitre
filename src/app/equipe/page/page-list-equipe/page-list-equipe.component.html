@@ -1,16 +1,41 @@
 <ng-container *ngIf="joueurs$"></ng-container>
 
+
 <div class="all-equipes">
+
+
+  <div class="block-selector-equipe">
+    <div class="menu-equipe">
+      <div (click)="switchDisplay()" id="selectedEquipe">
+        <p id="selectorEquipeTexte">Selectionner une équipe</p>
+        <img alt="Fleche ouverture Liste" src="assets/images/selectorEquipe/arrow.png">
+      </div>
+      <ul id="list">
+        <li (click)="selectorLiClicked($event, 1)" class="options">
+          <img alt="IconeFacebook" src="assets/images/selectorEquipe/facebook.png">
+          <p>Facebook</p>
+        </li>
+        <li (click)="selectorLiClicked($event, 2)" class="options">
+          <img alt="IconeInstagram" src="assets/images/selectorEquipe/instagram.png">
+          <p>Instagram</p>
+        </li>
+      </ul>
+    </div>
+  </div>
   <div class="equipe-cadre">
     <h1>Première ligne</h1>
     <div class="post">
-      <div *ngFor="let joueur of (joueurs$ | async)" class="joueur" (mouseenter)="hover($event)"
-           (mouseleave)="unhover($event)">
+      <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)" *ngFor="let joueur of (joueurs$ | async)"
+           class="joueur">
         <img src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
         <div class="info">
-          <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}} Ans {{getEnumsForGetValue(joueur.poste)}}</div>
+          <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
+            Ans {{getEnumsForGetValue(joueur.poste)}}</div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+<script src="assets/javascript/selectorEquipe.js"></script>
