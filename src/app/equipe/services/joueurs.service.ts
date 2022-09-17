@@ -17,4 +17,9 @@ export class JoueursService {
   getAllJoueurs(): Observable<JoueurI[]> {
     return this.httpClient.get<JoueurI[]>(this.url);
   }
+
+
+  getJoueursByEquipeId(equipeId: number): Observable<JoueurI[]> {
+    return this.httpClient.get<JoueurI[]>(`${this.url}/byequipe/${equipeId}`);
+  }
 }

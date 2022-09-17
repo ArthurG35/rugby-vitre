@@ -1,31 +1,26 @@
 # RugbyVitre
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+Le projet est généré avec [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
 
-## Development server
+## Utils
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you
-change any of the source files.
+### FrameWork
 
-## Code scaffolding
+#### Angular
 
-Run `ng generate component component-name` to generate a new component. You can also
-use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" height="40" width="52" alt="angularjs logo"  />
 
-## Build
+### Development Webs Language
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### TypeScript
 
-## Running unit tests
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" width="52" alt="javascript logo"  />
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Javascript
 
-## Running end-to-end tests
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="40" width="52" alt="typescript logo"  />
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a
-package that implements end-to-end testing capabilities.
+#### HTML & CSS
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out
-the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="40" width="52" alt="html5 logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="40" width="52" alt="css3 logo"  />
