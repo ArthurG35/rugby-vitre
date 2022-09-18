@@ -3,5 +3,6 @@ export interface JoueurI {
   age: number;
   prenom: string;
   nom: string;
+  placement: number;
   poste: string;
 }

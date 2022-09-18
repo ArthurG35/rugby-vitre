@@ -34,6 +34,11 @@ img {
 
         img {
           width: 12px;
+          transform: rotateZ(0deg);
+
+          &.listOpen {
+            transform: rotateZ(180deg);
+          }
         }
       }
 
@@ -49,6 +54,7 @@ img {
         &.open {
           display: block;
         }
+
 
         .options {
           width: 100%;
@@ -84,60 +90,71 @@ img {
 
     h1 {
       color: #ffffff;
-      padding-top: 40px;
     }
 
-    .post {
+    .boxLigne {
       display: flex;
-      flex-direction: row;
       flex-wrap: wrap;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-around;
+      align-content: center;
 
-      .joueur {
-        margin: 30px 60px;
-        font-size: 0;
-        background-color: #27ae60;
-        border: white 5px solid;
-        transition: all 0.5s 0s ease-in-out;
-        -webkit-transition: all 0.5s 0s ease-in-out;
-        -moz-transition: all 0.5s 0s ease-in-out;
-        -ms-transition: all 0.5s 0s ease-in-out;
-        -o-transition: all 0.5s 0s ease-in-out;
+      .post {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
 
-        &:hover {
-          background-color: #2ecc71;
-        }
-
-        .info {
-          opacity: 0;
-          width: 100%;
-          height: calc(100% / 10);
-          position: relative;
-          top: calc(-100% / 10);
-          left: 0%;
-          background-color: rgba(0, 0, 0, 0.5);
+        .joueur {
+          margin: 15px 30px;
+          font-size: 0;
+          background-color: #27ae60;
+          border: white 5px solid;
           transition: all 0.5s 0s ease-in-out;
           -webkit-transition: all 0.5s 0s ease-in-out;
           -moz-transition: all 0.5s 0s ease-in-out;
           -ms-transition: all 0.5s 0s ease-in-out;
           -o-transition: all 0.5s 0s ease-in-out;
-          display: flex;
-          flex-direction: row;
-          align-content: space-around;
-          justify-content: center;
-          align-items: center;
 
-          .NameAndAge {
-            font-size: initial;
-            position: absolute;
-            display: inline-block;
-            color: #ecf0f1;
-            font-weight: bold;
+          &:hover {
+            background-color: #2ecc71;
           }
-        }
 
-        .info.hovered {
-          opacity: 1;
+          img {
+            max-width: 300px;
+          }
+
+          .info {
+            opacity: 0;
+            width: 100%;
+            height: calc(100% / 10);
+            position: relative;
+            top: calc(-100% / 10);
+            left: 0%;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: all 0.5s 0s ease-in-out;
+            -webkit-transition: all 0.5s 0s ease-in-out;
+            -moz-transition: all 0.5s 0s ease-in-out;
+            -ms-transition: all 0.5s 0s ease-in-out;
+            -o-transition: all 0.5s 0s ease-in-out;
+            display: flex;
+            flex-direction: row;
+            align-content: space-around;
+            justify-content: center;
+            align-items: center;
+
+            .NameAndAge {
+              font-size: initial;
+              position: absolute;
+              display: inline-block;
+              color: #ecf0f1;
+              font-weight: bold;
+            }
+          }
+
+          .info.hovered {
+            opacity: 1;
+          }
         }
       }
     }
