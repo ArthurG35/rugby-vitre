@@ -5,6 +5,8 @@ import {JoueursService} from "../../services/joueurs.service";
 import {Poste} from "../../../core/enums/poste";
 import {EquipeI} from "../../../core/interfaces/equipe-i";
 import {EquipesService} from "../../services/equipes.service";
+import {Placement} from "../../../core/enums/placement";
+
 
 @Component({
   selector: 'app-page-list-equipe',
@@ -12,21 +14,22 @@ import {EquipesService} from "../../services/equipes.service";
   styleUrls: ['./page-list-equipe.component.scss']
 })
 export class PageListEquipeComponent implements OnInit {
+
+  ////////////INIT\\\\\\\\\\\\
   public joueurs$?: Observable<JoueurI[]>;
   public equipe$?: Observable<EquipeI[]>;
+  public joueurList: JoueurI[][] = [];
+  Poste = Poste;
+  Placement = Placement;
 
   constructor(private joueurService: JoueursService, private equipeService: EquipesService) {
   }
 
   ngOnInit(): void {
-    this.getJoueursByEquipeId(1);
     this.getAllequipe();
   }
 
-  getTest(number: number): void {
-    this.getJoueursByEquipeId(number)
-  }
-
+  ////////////Functions\\\\\\\\\\\\
   getAllJoueurs(): void {
     this.joueurs$ = this.joueurService.getAllJoueurs();
   }
@@ -47,6 +50,7 @@ export class PageListEquipeComponent implements OnInit {
     return !!enums[attributeName] ? enums[attributeName] : 'Inconnu';
   }
 
+  ////////////Card\\\\\\\\\\\\
   hover(e: any) {
     e.path[0].children[1].classList.add("hovered");
   }
@@ -55,14 +59,25 @@ export class PageListEquipeComponent implements OnInit {
     e.path[0].children[1].classList.remove("hovered");
   }
 
+  checkPoste(joueur: JoueurI, posteAttendu: string): boolean {
+    return joueur.poste == posteAttendu;
+  }
+
+  getPlacement(joueur: JoueurI): string {
+    return Placement[joueur.placement]
+  }
+
+
+  ////////////Menu\\\\\\\\\\\\
   switchDisplay() {
     const list = document.getElementById('list') as HTMLDivElement | null;
-    if (list != null) {
+    const arrow = document.getElementById('arrowList') as HTMLDivElement | null;
+    if (list != null && arrow != null) {
       list.classList.toggle('open')
+      arrow.classList.toggle('listOpen')
     }
 
   }
-
 
   selectorLiClicked(e: any, id: number) {
     const selected = e.path[0].innerText;
