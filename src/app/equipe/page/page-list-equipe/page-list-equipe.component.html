@@ -11,13 +11,9 @@
         <img alt="Fleche ouverture Liste" src="assets/images/selectorEquipe/arrow.png">
       </div>
       <ul id="list">
-        <li (click)="selectorLiClicked($event, 1)" class="options">
+        <li (click)="selectorLiClicked($event, equipe.id)" *ngFor="let equipe of equipe$ | async;" class="options">
           <img alt="IconeFacebook" src="assets/images/selectorEquipe/facebook.png">
-          <p>Facebook</p>
-        </li>
-        <li (click)="selectorLiClicked($event, 2)" class="options">
-          <img alt="IconeInstagram" src="assets/images/selectorEquipe/instagram.png">
-          <p>Instagram</p>
+          <p>{{equipe.name}}</p>
         </li>
       </ul>
     </div>
