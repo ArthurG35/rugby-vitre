@@ -73,11 +73,11 @@
           "configurations": {
             "production": {
               "browserTarget": "rugby-vitre:build:production",
-              "proxyConfig": "./proxy.conf.json"
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
               "browserTarget": "rugby-vitre:build:development",
-              "proxyConfig": "./proxy.conf.json"
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
