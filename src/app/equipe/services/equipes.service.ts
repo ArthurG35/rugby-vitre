@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {EquipeI} from "../../core/interfaces/equipe-i";
@@ -9,7 +8,7 @@ import {EquipeI} from "../../core/interfaces/equipe-i";
 })
 export class EquipesService {
 
-  private url: string = `${environment.apiUrl}/equipes`;
+  private url: string = `/api/v1/equipes`;
 
   constructor(private httpClient: HttpClient) {
   }
