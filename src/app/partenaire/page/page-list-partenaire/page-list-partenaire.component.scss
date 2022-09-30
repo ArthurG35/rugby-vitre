@@ -1,0 +1,60 @@
+.partenaireBox {
+  --tailleBox: 150px;
+
+
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+
+  .importantPartenaire {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+
+    .partenaireBoxBase {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      border-radius: 5px;
+      background: #ffffff2e;
+      border: none;
+      backdrop-filter: blur(1.2px);
+      margin: 3px;
+
+      .no-blur {
+        filter: blur(0);
+      }
+    }
+
+
+    .partenaireLuxe {
+      height: var(--tailleBox);
+      width: calc(var(--tailleBox) * 2);
+    }
+
+
+    .partenaireBase {
+      height: calc(var(--tailleBox) / 1.5);
+      width: calc((var(--tailleBox) / 1.5) * 2);
+    }
+
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: #fff;
+    background-image: linear-gradient(to right, #ccc, #fff, #ccc);
+    width: 98%;
+    margin: 50px 0;
+  }
+
+}
