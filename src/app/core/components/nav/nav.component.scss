@@ -64,14 +64,6 @@ nav {
   padding: 5px 100px;
   background-color: #2ecc71;
   position: fixed;
-
-  ul {
-    li {
-      a {
-        color: #2d3436;
-      }
-    }
-  }
 }
 
 @include xs {

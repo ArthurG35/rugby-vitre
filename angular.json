@@ -72,12 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "rugby-vitre:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "rugby-vitre:build:production"
             },
             "development": {
-              "browserTarget": "rugby-vitre:build:development",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "rugby-vitre:build:development"
             }
           },
           "defaultConfiguration": "development"

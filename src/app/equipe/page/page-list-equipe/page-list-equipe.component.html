@@ -8,12 +8,12 @@
     <div class="menu-equipe">
       <div (click)="switchDisplay()" id="selectedEquipe">
         <p id="selectorEquipeTexte">Selectionner une équipe</p>
-        <img alt="Fleche ouverture Liste" id="arrowList" src="assets/images/selectorEquipe/arrow.png">
+        <img alt="Fleche ouverture Liste" id="arrowList" loading="lazy" src="assets/images/selectorEquipe/arrow.png">
       </div>
       <ul class="accordion-content" id="list">
         <li (click)="selectorLiClicked($event, equipe.id)" *ngFor="let equipe of equipe$ | async;"
             class="options">
-          <img alt="IconeFacebook" src="assets/images/selectorEquipe/facebook.png">
+          <img alt="IconeFacebook" loading="lazy" src="assets/images/selectorEquipe/facebook.png">
           <p>{{equipe.name}}</p>
         </li>
       </ul>
@@ -28,7 +28,7 @@
         <div *ngIf="checkPoste(joueur, Poste.PREMIERELIGNE)" class="post">
           <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
                class="joueur">
-            <img src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
+            <img alt="IMG_PROFIL_JOUEUR" loading="lazy" src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
                 Ans - {{getPlacement(joueur)}}</div>
@@ -47,7 +47,7 @@
           <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
 
                class="joueur">
-            <img src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
+            <img alt="IMG_PROFIL_JOUEUR" src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
                 Ans - {{getPlacement(joueur)}}</div>
@@ -66,7 +66,7 @@
           <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
 
                class="joueur">
-            <img src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
+            <img alt="IMG_PROFIL_JOUEUR" src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
                 Ans - {{getPlacement(joueur)}}</div>
@@ -85,7 +85,7 @@
           <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
 
                class="joueur">
-            <img src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
+            <img alt="IMG_PROFIL_JOUEUR" src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
                 Ans - {{getPlacement(joueur)}}</div>
@@ -104,7 +104,7 @@
           <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
 
                class="joueur">
-            <img src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
+            <img alt="IMG_PROFIL_JOUEUR" src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
                 Ans - {{getPlacement(joueur)}}</div>
@@ -123,7 +123,7 @@
           <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
 
                class="joueur">
-            <img src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
+            <img alt="IMG_PROFIL_JOUEUR" src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
                 Ans - {{getPlacement(joueur)}}</div>
@@ -142,7 +142,7 @@
           <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
 
                class="joueur">
-            <img src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
+            <img alt="IMG_PROFIL_JOUEUR" src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
                 Ans - {{getPlacement(joueur)}}</div>
@@ -161,7 +161,7 @@
           <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
 
                class="joueur">
-            <img src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
+            <img alt="IMG_PROFIL_JOUEUR" src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
                 Ans - {{getPlacement(joueur)}} </div>
@@ -173,6 +173,3 @@
   </div>
 
 </div>
-
-
-<script src="assets/javascript/selectorEquipe.js"></script>
