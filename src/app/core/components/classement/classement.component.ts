@@ -13,7 +13,7 @@ export class ClassementComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
+
 
 }
