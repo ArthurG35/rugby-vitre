@@ -1,14 +1,18 @@
 .partenaireBox {
   --tailleBox: 150px;
 
-
   min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
   align-content: center;
   flex-direction: column;
+
+  h1 {
+    border: 10px solid white;
+    padding: 20px 30px;
+    margin: 25px;
+  }
 
   .importantPartenaire {
     display: flex;
@@ -21,13 +25,13 @@
     .partenaireBoxBase {
       display: flex;
       justify-content: center;
-      align-items: center;
       align-content: center;
       border-radius: 5px;
       background: #ffffff2e;
       border: none;
       backdrop-filter: blur(1.2px);
       margin: 3px;
+      padding: 20px;
 
       .no-blur {
         filter: blur(0);

@@ -1,46 +1,23 @@
 <div class="partenaireBox">
+  <h1>Nos Partenaires</h1>
   <div class="importantPartenaire">
-    <div class="partenaireBoxBase partenaireLuxe">
-      <p class="no-blur">img Here</p>
-    </div>
-    <div class="partenaireBoxBase partenaireLuxe">
-      <p class="no-blur">img Here</p>
-    </div>
-    <div class="partenaireBoxBase partenaireLuxe">
-      <p class="no-blur">img Here</p>
-    </div>
-    <div class="partenaireBoxBase partenaireLuxe">
-      <p class="no-blur">img Here</p>
-    </div>
-    <div class="partenaireBoxBase partenaireLuxe">
-      <p class="no-blur">img Here</p>
-    </div>
-    <div class="partenaireBoxBase partenaireLuxe">
-      <p class="no-blur">img Here</p>
-    </div>
+    <ng-container *ngFor="let partenaire of (partenaires$ | async)">
+      <div *ngIf="checkImportance(partenaire, Importance.HAUTE)" class="partenaireBoxBase partenaireLuxe">
+        <img alt="partenaire" class="no-blur"
+             src="{{partenaire.path}}"/>
+      </div>
+    </ng-container>
   </div>
 
   <hr>
 
   <div class="importantPartenaire">
-    <div class="partenaireBoxBase partenaireBase">
-      <p class="no-blur">img Here</p>
-    </div>
-    <div class="partenaireBoxBase partenaireBase">
-      <p class="no-blur">img Here</p>
-    </div>
-    <div class="partenaireBoxBase partenaireBase">
-      <p class="no-blur">img Here</p>
-    </div>
-    <div class="partenaireBoxBase partenaireBase">
-      <p class="no-blur">img Here</p>
-    </div>
-    <div class="partenaireBoxBase partenaireBase">
-      <p class="no-blur">img Here</p>
-    </div>
-    <div class="partenaireBoxBase partenaireBase">
-      <p class="no-blur">img Here</p>
-    </div>
+    <ng-container *ngFor="let partenaire of (partenaires$ | async)">
+      <div *ngIf="checkImportance(partenaire, Importance.BASSE)" class="partenaireBoxBase partenaireBase">
+        <img alt="partenaire" class="no-blur" src="{{partenaire.path}}"/>
+      </div>
+    </ng-container>
   </div>
 
 </div>
+

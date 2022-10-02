@@ -18,7 +18,6 @@ export class PageListEquipeComponent implements OnInit {
   ////////////INIT\\\\\\\\\\\\
   public joueurs$?: Observable<JoueurI[]>;
   public equipe$?: Observable<EquipeI[]>;
-  public joueurList: JoueurI[][] = [];
   Poste = Poste;
   Placement = Placement;
 
@@ -26,7 +25,7 @@ export class PageListEquipeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllequipe();
+    this.getAllEquipe();
   }
 
   ////////////Functions\\\\\\\\\\\\
@@ -34,7 +33,7 @@ export class PageListEquipeComponent implements OnInit {
     this.joueurs$ = this.joueurService.getAllJoueurs();
   }
 
-  getAllequipe(): void {
+  getAllEquipe(): void {
     this.equipe$ = this.equipeService.getAllEquipe();
   }
 

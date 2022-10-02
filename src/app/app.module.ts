@@ -7,6 +7,7 @@ import {SharedModule} from "./shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
 import {EquipeModule} from "./equipe/equipe.module";
+import {PartenaireModule} from "./partenaire/partenaire.module";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {EquipeModule} from "./equipe/equipe.module";
     HttpClientModule,
     CommonModule,
     EquipeModule,
+    PartenaireModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
