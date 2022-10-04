@@ -7,7 +7,7 @@ footer {
     color: #ecf0f1;
   }
 
-  bottom: 0px;
+  bottom: 0;
   width: 100%;
   background-color: var(--menu-background);
   color: #ecf0f1;
@@ -16,7 +16,7 @@ footer {
     display: flex;
 
     .box {
-      flex-basis: calc(100% / 3);
+      flex-basis: calc(100% / 2);
       padding: 10px 20px;
 
       h2 {

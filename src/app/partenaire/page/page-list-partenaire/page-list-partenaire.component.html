@@ -3,18 +3,18 @@
   <div class="importantPartenaire">
     <ng-container *ngFor="let partenaire of (partenaires$ | async)">
       <div *ngIf="checkImportance(partenaire, Importance.HAUTE)" class="partenaireBoxBase partenaireLuxe">
-        <img alt="partenaire" class="no-blur"
+        <img alt="partenaire" class="no-blur" draggable="false"
              src="{{partenaire.path}}"/>
       </div>
     </ng-container>
   </div>
 
-  <hr>
+  <!--  <hr>-->
 
   <div class="importantPartenaire">
     <ng-container *ngFor="let partenaire of (partenaires$ | async)">
       <div *ngIf="checkImportance(partenaire, Importance.BASSE)" class="partenaireBoxBase partenaireBase">
-        <img alt="partenaire" class="no-blur" src="{{partenaire.path}}"/>
+        <img alt="partenaire" class="no-blur" draggable="false" src="{{partenaire.path}}"/>
       </div>
     </ng-container>
   </div>

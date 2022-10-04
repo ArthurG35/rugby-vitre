@@ -1,3 +1,18 @@
 .widget-events-dual {
   width: 100%;
 }
+
+.container-widget {
+  min-height: 431px;
+  max-height: 431px;
+  height: 431px;
+}
+
+iframe {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  margin: auto;
+  border-width: 0;
+  height: 100%;
+}
