@@ -10,6 +10,7 @@ import {FooterComponent} from './components/footer/footer.component';
 import {WidgetComponent} from './components/widget/widget.component';
 import {SharedModule} from "../shared/shared.module";
 import {BrowserModule} from "@angular/platform-browser";
+import {LazyImgDirective} from "./directives/lazy-img-directive.directive";
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {BrowserModule} from "@angular/platform-browser";
     NavComponent,
     FooterComponent,
     WidgetComponent,
+    LazyImgDirective
   ],
   imports: [
     CommonModule,

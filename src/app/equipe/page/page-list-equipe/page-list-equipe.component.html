@@ -1,17 +1,18 @@
 <div class="all-equipes">
 
-
   <div class="block-selector-equipe">
     <div class="menu-equipe">
-      <div (click)="switchDisplay()" id="selectedEquipe">
-        <p id="selectorEquipeTexte">Selectionner une équipe</p>
-        <img alt="Fleche ouverture Liste" id="arrowList" loading="lazy" src="assets/images/selectorEquipe/arrow.png">
+      <div (click)="switchDisplay()" class="isMenu" id="selectedEquipe">
+        <p class="isMenu" id="selectorEquipeTexte">Selectionner une équipe</p>
+        <img alt="Fleche ouverture Liste" class="isMenu" id="arrowList" src="assets/images/selectorEquipe/arrow.png">
       </div>
       <ul class="accordion-content" id="list">
         <li (click)="selectorLiClicked($event, equipe.id)" *ngFor="let equipe of equipe$ | async;"
-            class="options">
-          <img alt="IconeFacebook" loading="lazy" src="assets/images/selectorEquipe/facebook.png">
-          <p>{{equipe.name}}</p>
+            [attr.data-equipe-name]="equipe.name" class="options isMenu">
+          <img [attr.data-equipe-name]="equipe.name" alt="IconeEquipe"
+               class="isMenu" src="assets/images/selectorEquipe/iconeEquipe.png">
+          <hr [attr.data-equipe-name]="equipe.name" class="isMenu"/>
+          <p [attr.data-equipe-name]="equipe.name" class="equipeName isMenu">{{equipe.name}}</p>
         </li>
       </ul>
     </div>
@@ -25,7 +26,7 @@
         <div *ngIf="checkPoste(joueur, Poste.PREMIERELIGNE)" class="post">
           <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
                class="joueur">
-            <img alt="IMG_PROFIL_JOUEUR" draggable="false" loading="lazy"
+            <img alt="IMG_PROFIL_JOUEUR" draggable="false"
                  src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
@@ -42,9 +43,7 @@
     <div class="boxLigne">
       <ng-container *ngFor="let joueur of (joueurs$ | async)" class="GroupeCards">
         <div *ngIf="checkPoste(joueur, Poste.DEUXIEMELIGNE)" class="post">
-          <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
-
-               class="joueur">
+          <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)" class="joueur">
             <img alt="IMG_PROFIL_JOUEUR" draggable="false" src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
@@ -61,9 +60,7 @@
     <div class="boxLigne">
       <ng-container *ngFor="let joueur of (joueurs$ | async)" class="GroupeCards">
         <div *ngIf="checkPoste(joueur, Poste.TROISIEMELIGNE)" class="post">
-          <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
-
-               class="joueur">
+          <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)" class="joueur">
             <img alt="IMG_PROFIL_JOUEUR" draggable="false" src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
@@ -80,9 +77,7 @@
     <div class="boxLigne">
       <ng-container *ngFor="let joueur of (joueurs$ | async)" class="GroupeCards">
         <div *ngIf="checkPoste(joueur, Poste.DEMIMELEE)" class="post">
-          <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
-
-               class="joueur">
+          <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)" class="joueur">
             <img alt="IMG_PROFIL_JOUEUR" draggable="false" src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
@@ -99,9 +94,7 @@
     <div class="boxLigne">
       <ng-container *ngFor="let joueur of (joueurs$ | async)" class="GroupeCards">
         <div *ngIf="checkPoste(joueur, Poste.DEMIOUVERTURE)" class="post">
-          <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
-
-               class="joueur">
+          <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)" class="joueur">
             <img alt="IMG_PROFIL_JOUEUR" draggable="false" src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
@@ -118,9 +111,7 @@
     <div class="boxLigne">
       <ng-container *ngFor="let joueur of (joueurs$ | async)" class="GroupeCards">
         <div *ngIf="checkPoste(joueur, Poste.TROISQUARTSCENTRE)" class="post">
-          <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
-
-               class="joueur">
+          <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)" class="joueur">
             <img alt="IMG_PROFIL_JOUEUR" draggable="false" src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
@@ -137,9 +128,7 @@
     <div class="boxLigne">
       <ng-container *ngFor="let joueur of (joueurs$ | async)" class="GroupeCards">
         <div *ngIf="checkPoste(joueur, Poste.AILIERS)" class="post">
-          <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
-
-               class="joueur">
+          <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)" class="joueur">
             <img alt="IMG_PROFIL_JOUEUR" draggable="false" src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}
@@ -156,9 +145,7 @@
     <div class="boxLigne">
       <ng-container *ngFor="let joueur of (joueurs$ | async)" class="GroupeCards">
         <div *ngIf="checkPoste(joueur, Poste.ARRIERE)" class="post">
-          <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)"
-
-               class="joueur">
+          <div (mouseenter)="hover($event)" (mouseleave)="unhover($event)" class="joueur">
             <img alt="IMG_PROFIL_JOUEUR" draggable="false" src="https://i.ibb.co/7rZZW2t/PP-Test-Page-Equipe-1.png"/>
             <div class="info">
               <div class="NameAndAge">{{joueur.nom}} {{joueur.prenom}} - {{joueur.age}}

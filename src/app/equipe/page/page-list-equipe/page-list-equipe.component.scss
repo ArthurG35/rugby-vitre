@@ -93,6 +93,10 @@ img {
 
           &:hover {
             background: #27ae60;
+
+            hr {
+              background: #2ecc71;
+            }
           }
 
           img {
@@ -104,6 +108,21 @@ img {
             -moz-user-select: none; /* Old versions of Firefox */
             -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none;
+          }
+
+          hr {
+            border: 0;
+            height: 26px;
+            width: 1px;
+            background: #27ae60;
+
+            &:hover {
+              background: #2ecc71;
+            }
+          }
+
+          .equipeName {
+            margin: 5px 20px;
           }
         }
       }

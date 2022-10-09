@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {JoueurI} from "../../../core/interfaces/joueur-i";
 import {JoueursService} from "../../services/joueurs.service";
@@ -20,12 +20,14 @@ export class PageListEquipeComponent implements OnInit {
   public equipe$?: Observable<EquipeI[]>;
   Poste = Poste;
   Placement = Placement;
+  private equipeLoad!: number;
+  private menu: boolean = false;
 
   constructor(private joueurService: JoueursService, private equipeService: EquipesService) {
   }
 
   ngOnInit(): void {
-    this.getAllEquipe();
+    this.getEquipeTrue();
   }
 
   ////////////Functions\\\\\\\\\\\\
@@ -38,7 +40,10 @@ export class PageListEquipeComponent implements OnInit {
   }
 
   getJoueursByEquipeId(equipeId: number): void {
-    this.joueurs$ = this.joueurService.getJoueursByEquipeId(equipeId)
+    if (equipeId != this.equipeLoad) {
+      this.joueurs$ = this.joueurService.getJoueursByEquipeId(equipeId);
+      this.equipeLoad = equipeId;
+    }
   }
 
   getEnumsForGetValue(attributeName: string): string {
@@ -48,6 +53,11 @@ export class PageListEquipeComponent implements OnInit {
   getAttribute(enums: any, attributeName: string): string {
     return !!enums[attributeName] ? enums[attributeName] : 'Inconnu';
   }
+
+  getEquipeTrue(): void {
+    this.equipe$ = this.equipeService.getEquipeTrue();
+  }
+
 
   ////////////Card\\\\\\\\\\\\
   hover(e: any) {
@@ -74,17 +84,24 @@ export class PageListEquipeComponent implements OnInit {
     if (list != null && arrow != null) {
       list.classList.toggle('open')
       arrow.classList.toggle('listOpen')
+      this.menu = !this.menu;
     }
-
   }
 
   selectorLiClicked(e: any, id: number) {
-    const selected = e.path[0].innerText;
+    const selected = e.target.getAttribute("data-equipe-name");
     const box = document.getElementById('selectorEquipeTexte') as HTMLDivElement | null;
     if (box != null) {
       box.innerText = selected;
       this.getJoueursByEquipeId(id);
     }
     this.switchDisplay();
+  }
+
+  @HostListener('document:click', ['$event.target'])
+  onClick(element: HTMLElement) {
+    if (!element.classList.contains('isMenu') && this.menu) {
+      this.switchDisplay();
+    }
   }
 }
