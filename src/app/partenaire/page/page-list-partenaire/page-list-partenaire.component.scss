@@ -1,3 +1,5 @@
+@import "src/assets/styling/mediaqueries";
+
 .partenaireBox {
   --tailleBox: 200px;
 
@@ -61,4 +63,13 @@
     margin: 50px 0;
   }
 
+}
+
+@include xs {
+  .partenaireBox {
+    h1 {
+      font-size: larger;
+      text-align: center;
+    }
+  }
 }
