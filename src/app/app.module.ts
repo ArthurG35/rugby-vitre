@@ -9,6 +9,7 @@ import {CommonModule} from "@angular/common";
 import {EquipeModule} from "./equipe/equipe.module";
 import {PartenaireModule} from "./partenaire/partenaire.module";
 import {BoutiqueModule} from "./boutique/boutique.module";
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {BoutiqueModule} from "./boutique/boutique.module";
     CommonModule,
     EquipeModule,
     PartenaireModule,
-    BoutiqueModule
+    BoutiqueModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,6 @@
-<div style="height: 50px;width: 50px;background: red;position: fixed;right: 50px;">
-  <i class="fa-solid fa-cart-shopping"></i>
+<div class="bloc-shop-cart">
+  <app-icon-cart class="cart"></app-icon-cart>
+  <span *ngIf="getCountElement() > 0">{{getCountElement()}}</span>
 </div>
 
 <div class="slide-container">

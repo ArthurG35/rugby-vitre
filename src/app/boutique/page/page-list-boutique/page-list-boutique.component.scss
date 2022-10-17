@@ -1,5 +1,27 @@
 @import "src/assets/styling/mediaqueries";
 
+.bloc-shop-cart {
+  height: 60px;
+  width: 60px;
+  background: white;
+  position: fixed;
+  right: 50px;
+  border-radius: 50px;
+  top: 10%;
+  cursor: pointer;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #2ecc71;
+
+  .cart {
+    color: #2ecc71;
+  }
+}
+
 .slide-container {
   justify-content: center;
   display: flex;

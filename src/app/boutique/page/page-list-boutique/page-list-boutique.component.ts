@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {map, Observable, tap} from "rxjs";
+import {map, Observable} from "rxjs";
 import {ArticleI} from "../../../core/interfaces/article-i";
 import {ArticlesService} from "../../services/articles.service";
 import {SizeService} from "../../services/size.service";
 import {SizeI} from "../../../core/interfaces/size-i";
 
-export class article {
+export class cart {
+  private static cartArray: cart[] = [];
+  private static elementInCart = 0;
   public id: number;
   public taille: string;
   public quantite: number;
@@ -14,6 +16,33 @@ export class article {
     this.id = id;
     this.taille = taille;
     this.quantite = quantite;
+  }
+
+  static addCart(ref: number, sizeSelect: string, quantite: number): void {
+    if (cart.cartArray.findIndex(obj => obj.id === ref) != -1 && cart.cartArray.findIndex(obj => obj.taille === sizeSelect) != -1) {
+      let index = -1;
+      for (let i = 0; i < cart.cartArray.length; i++) {
+        if (cart.cartArray[i].id === ref) {
+          index = i
+        }
+      }
+      cart.cartArray[index].quantite = Number(cart.cartArray[index].quantite) + Number(quantite);
+    } else {
+      this.cartArray.push(new cart(ref, sizeSelect, quantite));
+    }
+    cart.countsElement()
+  }
+
+  static getCount(): number {
+    return cart.elementInCart;
+  }
+
+  private static countsElement(): void {
+    let _elementCounts = 0;
+    for (let i = 0; i < cart.cartArray.length; i++) {
+      _elementCounts += Number(cart.cartArray[i].quantite)
+    }
+    cart.elementInCart = _elementCounts;
   }
 }
 
@@ -29,10 +58,18 @@ export class sizePossibility {
     this.sizeArray.push(size);
   }
 
-  static checkSizeExist(size: string): boolean {
-    return this.sizeArray.findIndex(obj => obj.size === size) != -1
+  static checkSizeExist(size: any): number {
+    for (let i = 0; i < sizePossibility.sizeArray.length; i++) {
+      if (sizePossibility.sizeArray[i].size === size) {
+        return i
+      }
+    }
+    return -1
   }
 
+  static getSize(index: number): string {
+    return sizePossibility.sizeArray[index].size;
+  }
 
 }
 
@@ -42,10 +79,8 @@ export class sizePossibility {
   styleUrls: ['./page-list-boutique.component.scss']
 })
 export class PageListBoutiqueComponent implements OnInit {
-  public cart: article[] = [];
   public articles$?: Observable<ArticleI[] | any>;
 
-  private sizeExiste: string[] = ["XS", "S", "M", "L", "XL", "XXL", "XXXL"]
 
   constructor(
     private articleService: ArticlesService,
@@ -71,8 +106,7 @@ export class PageListBoutiqueComponent implements OnInit {
       .pipe(
         map(articles => {
           return this.addSizeToArticle(articles);
-        }),
-        tap(value => console.log(value))
+        })
       );
   }
 
@@ -97,8 +131,7 @@ export class PageListBoutiqueComponent implements OnInit {
       const quantite = e.path[1].children[1].value;
       const sizeSelect = e.path[1].children[0].value;
       if (sizePossibility.checkSizeExist(sizeSelect)) {
-        this.cart.push(new article(ref, sizeSelect, quantite))
-        console.log(this.cart)
+        cart.addCart(ref, sizeSelect, quantite)
       } else {
         e.path[1].children[0].selectedIndex = null
         e.path[1].children[1].value = 1
@@ -110,12 +143,16 @@ export class PageListBoutiqueComponent implements OnInit {
     return this.sizeServices.getSizeById(sizeId);
   }
 
-  public getAttribute(size: any): any {
-    return (this.sizeExiste)[size - 1] ? (this.sizeExiste)[size - 1] : 'Inconnu';
+  public getAttribute(size: number): string {
+    return sizePossibility.checkSizeExist(size - 1) ? sizePossibility.getSize(size - 1) : 'Inconnu';
   }
 
   checkSizeExist(size: string): boolean {
-    return this.sizeExiste.indexOf(size) != -1
+    return sizePossibility.checkSizeExist(size) != -1
+  }
+
+  public getCountElement(): number {
+    return cart.getCount();
   }
 
   private addSizeToArticle(articles: ArticleI[]) {
