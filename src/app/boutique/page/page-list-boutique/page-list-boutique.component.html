@@ -1,1 +1,35 @@
-<p>page-list-boutique works!</p>
+<div style="height: 50px;width: 50px;background: red;position: fixed;right: 50px;">
+  <i class="fa-solid fa-cart-shopping"></i>
+</div>
+
+<div class="slide-container">
+  <div class="wrapper">
+    <ng-container *ngFor="let article of (articles$ | async)">
+      <div class="card">
+        <div class="name">{{article.name}}</div>
+        <div class="image">
+          <img alt="img" src="assets/images/boutique/images4.jpg">
+        </div>
+        <div class="pricebox clearfix">
+          <div class="one-third no-border">
+            <div class="price">{{article.prix.toFixed(2)}}€</div>
+            <hr/>
+            <div class="optionAdd">
+              <select (change)="getChange($event)" name="taille" required>
+                <option disabled hidden selected>Taille</option>
+                <ng-container *ngFor="let sizeObs of article.sizeShopIds">
+                  <ng-container *ngIf="sizeObs as size">
+                    <option>{{getAttribute(size)}}</option>
+                  </ng-container>
+                </ng-container>
+              </select>
+              <input max="100" min="1" required step="1" type="number" value="1"/>
+              <button (click)="addToCart($event)" [attr.data-article]="article.id" data-shop="shop" disabled>Ajouter
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
