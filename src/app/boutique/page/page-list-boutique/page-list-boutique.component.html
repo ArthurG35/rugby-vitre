@@ -34,3 +34,12 @@
     </ng-container>
   </div>
 </div>
+
+<div class="viewCartBackground">
+  <div class="viewCart">
+    <div class="title"><h1>Commande</h1></div>
+    <ng-container *ngFor="let name of getCart()">
+      <p>{{name.quantite}}</p>
+    </ng-container>
+  </div>
+</div>

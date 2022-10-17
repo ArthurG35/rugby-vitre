@@ -7,7 +7,7 @@ import {IconsModule} from "../icons/icons.module";
 
 @NgModule({
   declarations: [
-    PageListBoutiqueComponent
+    PageListBoutiqueComponent,
   ],
   imports: [
     CommonModule,

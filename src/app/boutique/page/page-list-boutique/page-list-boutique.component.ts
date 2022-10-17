@@ -37,6 +37,10 @@ export class cart {
     return cart.elementInCart;
   }
 
+  static getAllCart(): cart[] {
+    return cart.cartArray
+  }
+
   private static countsElement(): void {
     let _elementCounts = 0;
     for (let i = 0; i < cart.cartArray.length; i++) {
@@ -113,7 +117,7 @@ export class PageListBoutiqueComponent implements OnInit {
   getChange(e: any) {
     if (e.target != null) {
       const sizeSelected: string = e.target.value;
-      if (sizePossibility.checkSizeExist(sizeSelected)) {
+      if (sizePossibility.checkSizeExist(sizeSelected) != -1) {
         if (e.path[1].children[2].type === "submit") {
           e.path[1].children[2].disabled = false;
         } else {
@@ -132,11 +136,15 @@ export class PageListBoutiqueComponent implements OnInit {
       const sizeSelect = e.path[1].children[0].value;
       if (sizePossibility.checkSizeExist(sizeSelect)) {
         cart.addCart(ref, sizeSelect, quantite)
-      } else {
-        e.path[1].children[0].selectedIndex = null
-        e.path[1].children[1].value = 1
       }
+      this.resetCard(e);
     }
+  }
+
+  resetCard(e: any) {
+    e.path[1].children[0].selectedIndex = null;
+    e.path[1].children[1].value = 1;
+    e.path[1].children[2].disabled = true;
   }
 
   getSizeInfos(sizeId: number): Observable<SizeI> {
@@ -153,6 +161,10 @@ export class PageListBoutiqueComponent implements OnInit {
 
   public getCountElement(): number {
     return cart.getCount();
+  }
+
+  getCart(): cart[] {
+    return cart.getAllCart();
   }
 
   private addSizeToArticle(articles: ArticleI[]) {
