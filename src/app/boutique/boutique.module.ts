@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { BoutiqueRoutingModule } from './boutique-routing.module';
-import { PageListBoutiqueComponent } from './page/page-list-boutique/page-list-boutique.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BoutiqueRoutingModule} from './boutique-routing.module';
+import {PageListBoutiqueComponent} from './page/page-list-boutique/page-list-boutique.component';
 
 
 @NgModule({
@@ -17,4 +16,5 @@ import { PageListBoutiqueComponent } from './page/page-list-boutique/page-list-b
     PageListBoutiqueComponent
   ]
 })
-export class BoutiqueModule { }
+export class BoutiqueModule {
+}

@@ -8,6 +8,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
 import {EquipeModule} from "./equipe/equipe.module";
 import {PartenaireModule} from "./partenaire/partenaire.module";
+import {BoutiqueModule} from "./boutique/boutique.module";
 
 @NgModule({
   declarations: [
@@ -22,9 +23,11 @@ import {PartenaireModule} from "./partenaire/partenaire.module";
     CommonModule,
     EquipeModule,
     PartenaireModule,
+    BoutiqueModule
   ],
   providers: [],
   bootstrap: [AppComponent],
+  exports: [],
 })
 export class AppModule {
 }
