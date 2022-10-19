@@ -110,6 +110,27 @@ export class sizePossibility {
 
 }
 
+export class prixTotal {
+  private static prixTotal: number = 0;
+  private prix: number;
+
+  constructor(prix: number) {
+    this.prix = prix
+  }
+
+  static resetPrixTotal(): void {
+    prixTotal.prixTotal = 0
+  }
+
+  static calculPrix(prixAdd: number, multiple: number): void {
+    prixTotal.prixTotal = Number(prixTotal.prixTotal) + (Number(prixAdd) * multiple);
+  }
+
+  static getPrixTotal(): number {
+    return prixTotal.prixTotal;
+  }
+}
+
 export class recapActive {
   private static active: boolean = false;
   public active: boolean
@@ -134,7 +155,7 @@ export class recapActive {
   styleUrls: ['./page-list-boutique.component.scss']
 })
 export class PageListBoutiqueComponent implements OnInit {
-  public articles$?: Observable<ArticleI[] | any>;
+  public articles$?: Observable<ArticleI[]> | null;
   private subs: Subscription[] = [];
 
 
@@ -154,11 +175,14 @@ export class PageListBoutiqueComponent implements OnInit {
   }
 
   getSize(): void {
-    this.subs.push(this.sizeServices.getAllSize().subscribe(sizelist => {
-      for (let i = 0; i < sizelist.length; i++) {
-        sizePossibility.addSize(new sizePossibility(sizelist[i]["sizeExiste"]));
-      }
-    }));
+    let ObsSize = this.sizeServices.getAllSize();
+    if (ObsSize != null) {
+      this.subs.push(ObsSize.subscribe(sizelist => {
+        for (let i = 0; i < sizelist.length; i++) {
+          sizePossibility.addSize(new sizePossibility(sizelist[i]["sizeExiste"]));
+        }
+      }));
+    }
   }
 
   getAllArticles(): void {
@@ -190,18 +214,25 @@ export class PageListBoutiqueComponent implements OnInit {
       }
       this.resetCard(e);
       const allCart = cart.getAllCart();
+      prixTotal.resetPrixTotal();
       for (let i = 0; i < allCart.length; i++) {
         this.getArticleToRecap(allCart[i].id, allCart[i].quantite, allCart[i].taille)
       }
     }
-
   }
 
+
   getArticleToRecap(id: number, quantite: number, size: string): void {
-    this.subs.push(this.articleService.getArticleById(id).subscribe(article => {
-      articleTransfere.pushToArray(new articleTransfere(article.id, article.name, article.prix, quantite, size))
-    }));
+    let obsSingleArticle: ArticleI | null = this.articleService.getArticleById(id);
+    if (obsSingleArticle) {
+      prixTotal.calculPrix(obsSingleArticle.prix, quantite);
+      articleTransfere.pushToArray(new articleTransfere(obsSingleArticle.id, obsSingleArticle.name, obsSingleArticle.prix, quantite, size))
+    }
   };
+
+  getPrixTotalCommande(): number {
+    return prixTotal.getPrixTotal();
+  }
 
   resetCard(e: any) {
     e.path[1].children[0].selectedIndex = null;
