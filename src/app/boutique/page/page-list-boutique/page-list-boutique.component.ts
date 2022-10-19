@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {map, Observable, Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {ArticleI} from "../../../core/interfaces/article-i";
 import {ArticlesService} from "../../services/articles.service";
 import {SizeService} from "../../services/size.service";
@@ -162,12 +162,7 @@ export class PageListBoutiqueComponent implements OnInit {
   }
 
   getAllArticles(): void {
-    this.articles$ = this.articleService.getAllArticle()
-      .pipe(
-        map(articles => {
-          return this.addSizeToArticle(articles);
-        })
-      );
+    this.articles$ = this.articleService.getAllArticle();
   }
 
   getChange(e: any) {
@@ -190,7 +185,7 @@ export class PageListBoutiqueComponent implements OnInit {
       const ref = e.target.getAttribute("data-article");
       const quantite = e.path[1].children[1].value;
       const sizeSelect = e.path[1].children[0].value;
-      if (sizePossibility.checkSizeExist(sizeSelect)) {
+      if (sizePossibility.checkSizeExist(sizeSelect) != -1) {
         cart.addCart(ref, sizeSelect, quantite)
       }
       this.resetCard(e);
@@ -250,13 +245,4 @@ export class PageListBoutiqueComponent implements OnInit {
     return recapActive.getActiveRecap()
   }
 
-  private addSizeToArticle(articles: ArticleI[]) {
-    return articles.map(articles => {
-      return {
-        ...articles, sizes: articles.sizeShopIds?.map(id => {
-          return this.getSizeInfos(id) as Observable<SizeI>
-        })
-      }
-    })
-  }
 }
