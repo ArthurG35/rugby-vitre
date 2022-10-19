@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {map, Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {ArticleI} from "../../../core/interfaces/article-i";
 import {ArticlesService} from "../../services/articles.service";
 import {SizeService} from "../../services/size.service";
@@ -31,10 +31,15 @@ export class cart {
       this.cartArray.push(new cart(ref, sizeSelect, quantite));
     }
     cart.countsElement()
+    articleTransfere.resetArticleTransfere();
   }
 
   static getCount(): number {
     return cart.elementInCart;
+  }
+
+  static getAllCart(): cart[] {
+    return cart.cartArray
   }
 
   private static countsElement(): void {
@@ -44,6 +49,38 @@ export class cart {
     }
     cart.elementInCart = _elementCounts;
   }
+}
+
+
+export class articleTransfere {
+
+  private static recapCommande: articleTransfere[] = []
+  public quantite: number;
+  public name: string;
+  public prix: number;
+  public size: string;
+  private id: number;
+
+  constructor(id: number, name: string, prix: number, quantite: number, size: string) {
+    this.id = id;
+    this.name = name;
+    this.prix = prix;
+    this.quantite = quantite
+    this.size = size
+  }
+
+  static resetArticleTransfere(): void {
+    articleTransfere.recapCommande = [];
+  }
+
+  static pushToArray(article: articleTransfere): void {
+    articleTransfere.recapCommande.push(article);
+  }
+
+  static getRecap(): articleTransfere[] {
+    return articleTransfere.recapCommande
+  }
+
 }
 
 export class sizePossibility {
@@ -73,6 +110,24 @@ export class sizePossibility {
 
 }
 
+export class recapActive {
+  private static active: boolean = false;
+  public active: boolean
+
+  constructor(active: boolean) {
+    this.active = active;
+  }
+
+  static getActiveRecap(): boolean {
+    return recapActive.active
+  }
+
+  static setActiveRecap(): void {
+    recapActive.active = !recapActive.active;
+  }
+
+}
+
 @Component({
   selector: 'app-page-list-boutique',
   templateUrl: './page-list-boutique.component.html',
@@ -80,6 +135,7 @@ export class sizePossibility {
 })
 export class PageListBoutiqueComponent implements OnInit {
   public articles$?: Observable<ArticleI[] | any>;
+  private subs: Subscription[] = [];
 
 
   constructor(
@@ -93,27 +149,26 @@ export class PageListBoutiqueComponent implements OnInit {
     this.getAllArticles();
   }
 
+  ngOnDestroy() {
+    this.subs.forEach(value => value.unsubscribe())
+  }
+
   getSize(): void {
-    this.sizeServices.getAllSize().subscribe(sizelist => {
+    this.subs.push(this.sizeServices.getAllSize().subscribe(sizelist => {
       for (let i = 0; i < sizelist.length; i++) {
         sizePossibility.addSize(new sizePossibility(sizelist[i]["sizeExiste"]));
       }
-    });
+    }));
   }
 
   getAllArticles(): void {
-    this.articles$ = this.articleService.getAllArticle()
-      .pipe(
-        map(articles => {
-          return this.addSizeToArticle(articles);
-        })
-      );
+    this.articles$ = this.articleService.getAllArticle();
   }
 
   getChange(e: any) {
     if (e.target != null) {
       const sizeSelected: string = e.target.value;
-      if (sizePossibility.checkSizeExist(sizeSelected)) {
+      if (sizePossibility.checkSizeExist(sizeSelected) != -1) {
         if (e.path[1].children[2].type === "submit") {
           e.path[1].children[2].disabled = false;
         } else {
@@ -130,13 +185,28 @@ export class PageListBoutiqueComponent implements OnInit {
       const ref = e.target.getAttribute("data-article");
       const quantite = e.path[1].children[1].value;
       const sizeSelect = e.path[1].children[0].value;
-      if (sizePossibility.checkSizeExist(sizeSelect)) {
+      if (sizePossibility.checkSizeExist(sizeSelect) != -1) {
         cart.addCart(ref, sizeSelect, quantite)
-      } else {
-        e.path[1].children[0].selectedIndex = null
-        e.path[1].children[1].value = 1
+      }
+      this.resetCard(e);
+      const allCart = cart.getAllCart();
+      for (let i = 0; i < allCart.length; i++) {
+        this.getArticleToRecap(allCart[i].id, allCart[i].quantite, allCart[i].taille)
       }
     }
+
+  }
+
+  getArticleToRecap(id: number, quantite: number, size: string): void {
+    this.subs.push(this.articleService.getArticleById(id).subscribe(article => {
+      articleTransfere.pushToArray(new articleTransfere(article.id, article.name, article.prix, quantite, size))
+    }));
+  };
+
+  resetCard(e: any) {
+    e.path[1].children[0].selectedIndex = null;
+    e.path[1].children[1].value = 1;
+    e.path[1].children[2].disabled = true;
   }
 
   getSizeInfos(sizeId: number): Observable<SizeI> {
@@ -155,15 +225,24 @@ export class PageListBoutiqueComponent implements OnInit {
     return cart.getCount();
   }
 
-  private addSizeToArticle(articles: ArticleI[]) {
-    return articles.map(articles => {
-      return {
-        ...articles, sizes: articles.sizeShopIds?.map(id => {
-          return this.getSizeInfos(id) as Observable<SizeI>
-        })
-      }
-    })
+  getCart(): cart[] {
+    return cart.getAllCart();
   }
 
+  getRecapArticle(): articleTransfere[] {
+    return articleTransfere.getRecap();
+  }
+
+  cartToRecap() {
+    this.switchActivePageRecap()
+  }
+
+  switchActivePageRecap(): void {
+    recapActive.setActiveRecap()
+  }
+
+  getBoolActiveRecap(): boolean {
+    return recapActive.getActiveRecap()
+  }
 
 }
