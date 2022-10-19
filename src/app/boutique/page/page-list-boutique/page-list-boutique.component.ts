@@ -31,6 +31,7 @@ export class cart {
       this.cartArray.push(new cart(ref, sizeSelect, quantite));
     }
     cart.countsElement()
+    articleTransfere.resetArticleTransfere();
   }
 
   static getCount(): number {
@@ -48,6 +49,38 @@ export class cart {
     }
     cart.elementInCart = _elementCounts;
   }
+}
+
+
+export class articleTransfere {
+
+  private static recapCommande: articleTransfere[] = []
+  public quantite: number;
+  public name: string;
+  public prix: number;
+  public size: string;
+  private id: number;
+
+  constructor(id: number, name: string, prix: number, quantite: number, size: string) {
+    this.id = id;
+    this.name = name;
+    this.prix = prix;
+    this.quantite = quantite
+    this.size = size
+  }
+
+  static resetArticleTransfere(): void {
+    articleTransfere.recapCommande = [];
+  }
+
+  static pushToArray(article: articleTransfere): void {
+    articleTransfere.recapCommande.push(article);
+  }
+
+  static getRecap(): articleTransfere[] {
+    return articleTransfere.recapCommande
+  }
+
 }
 
 export class sizePossibility {
@@ -77,6 +110,24 @@ export class sizePossibility {
 
 }
 
+export class recapActive {
+  private static active: boolean = false;
+  public active: boolean
+
+  constructor(active: boolean) {
+    this.active = active;
+  }
+
+  static getActiveRecap(): boolean {
+    return recapActive.active
+  }
+
+  static setActiveRecap(): void {
+    recapActive.active = !recapActive.active;
+  }
+
+}
+
 @Component({
   selector: 'app-page-list-boutique',
   templateUrl: './page-list-boutique.component.html',
@@ -84,7 +135,6 @@ export class sizePossibility {
 })
 export class PageListBoutiqueComponent implements OnInit {
   public articles$?: Observable<ArticleI[] | any>;
-
 
   constructor(
     private articleService: ArticlesService,
@@ -138,8 +188,18 @@ export class PageListBoutiqueComponent implements OnInit {
         cart.addCart(ref, sizeSelect, quantite)
       }
       this.resetCard(e);
+      for (let i = 0; i < cart.getAllCart().length; i++) {
+        this.getArticleToRecap(cart.getAllCart()[i].id, cart.getAllCart()[i].quantite, cart.getAllCart()[i].taille)
+      }
     }
+
   }
+
+  getArticleToRecap(id: number, quantite: number, size: string): void {
+    this.articleService.getArticleById(id).subscribe(article => {
+      articleTransfere.pushToArray(new articleTransfere(article.id, article.name, article.prix, quantite, size))
+    });
+  };
 
   resetCard(e: any) {
     e.path[1].children[0].selectedIndex = null;
@@ -167,6 +227,21 @@ export class PageListBoutiqueComponent implements OnInit {
     return cart.getAllCart();
   }
 
+  getRecapArticle(): articleTransfere[] {
+    return articleTransfere.getRecap();
+  }
+
+  cartToRecap() {
+    // for (let i = 0; i < cart.getAllCart().length; i++) {
+    //   this.getArticleToRecap(cart.getAllCart()[i].id, cart.getAllCart()[i].quantite, cart.getAllCart()[i].taille)
+    // }
+    recapActive.setActiveRecap();
+  }
+
+  getBoolActiveRecap(): boolean {
+    return recapActive.getActiveRecap()
+  }
+
   private addSizeToArticle(articles: ArticleI[]) {
     return articles.map(articles => {
       return {
@@ -176,6 +251,4 @@ export class PageListBoutiqueComponent implements OnInit {
       }
     })
   }
-
-
 }
