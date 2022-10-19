@@ -70,6 +70,7 @@
             </tbody>
           </table>
         </div>
+        <h3>Montant total: {{getPrixTotalCommande()}}€ | Article Total: {{getCountElement()}}</h3>
       </ng-container>
       <ng-container *ngIf="getCountElement() < 1">
         <div class="cartIsVoid">

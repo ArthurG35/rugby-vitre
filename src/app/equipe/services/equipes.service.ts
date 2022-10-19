@@ -14,12 +14,8 @@ export class EquipesService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getAllEquipe(): Observable<EquipeI[]> {
-    return this.httpClient.get<EquipeI[]>(this.url);
-  }
-
   getEquipeTrue(): Observable<EquipeI[]> {
     return this.httpClient.get<EquipeI[]>(`${this.url}/equipevisibility/true`);
   }
-  
+
 }

@@ -31,13 +31,6 @@ export class PageListEquipeComponent implements OnInit {
   }
 
   ////////////Functions\\\\\\\\\\\\
-  getAllJoueurs(): void {
-    this.joueurs$ = this.joueurService.getAllJoueurs();
-  }
-
-  getAllEquipe(): void {
-    this.equipe$ = this.equipeService.getAllEquipe();
-  }
 
   getJoueursByEquipeId(equipeId: number): void {
     if (equipeId != this.equipeLoad) {
