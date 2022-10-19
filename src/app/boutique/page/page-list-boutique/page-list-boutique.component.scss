@@ -158,6 +158,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+
+    .cross {
+      position: absolute;
+      right: 0;
+      margin: 5px 8px;
+      top: 0;
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      border: 3px solid white;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+    }
 
     .title {
       text-align: center;
@@ -242,6 +258,20 @@
 
     ::-webkit-scrollbar-thumb {
       -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .cartIsVoid {
+      height: calc(100% - 256.5px);
+      overflow: hidden;
+      margin-top: 0;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      width: 90%;
+      text-align-last: center;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
     }
 
   }

@@ -39,33 +39,44 @@
 <ng-container *ngIf="getBoolActiveRecap()">
   <div class="viewCartBackground">
     <div class="viewCart">
+      <div (click)="switchActivePageRecap()" class="cross">
+        <app-icon-cross></app-icon-cross>
+      </div>
       <div class="title"><h1>Commande</h1></div>
-      <div class="tbl-header">
-        <table>
-          <thead>
-          <tr>
-            <th>Article</th>
-            <th>Taille</th>
-            <th>Quantié</th>
-            <th>Prix</th>
-          </tr>
-          </thead>
-        </table>
-      </div>
-      <div class="tbl-content">
-        <table>
-          <tbody>
-          <ng-container *ngFor="let article of getRecapArticle()">
+      <ng-container *ngIf="getCountElement() > 0">
+        <div class="tbl-header">
+          <table>
+            <thead>
             <tr>
-              <td>{{article.name}}</td>
-              <td>{{article.size}}</td>
-              <td>{{article.quantite}}</td>
-              <td>{{article.prix.toFixed(2)}}€</td>
+              <th>Article</th>
+              <th>Taille</th>
+              <th>Quantié</th>
+              <th>Prix</th>
             </tr>
-          </ng-container>
-          </tbody>
-        </table>
-      </div>
+            </thead>
+          </table>
+        </div>
+        <div class="tbl-content">
+          <table>
+            <tbody>
+            <ng-container *ngFor="let article of getRecapArticle()">
+              <tr>
+                <td>{{article.name}}</td>
+                <td>{{article.size}}</td>
+                <td>{{article.quantite}}</td>
+                <td>{{article.prix.toFixed(2)}}€</td>
+              </tr>
+            </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="getCountElement() < 1">
+        <div class="cartIsVoid">
+          <app-icon-cart style="display: block"></app-icon-cart>
+          <h2 style="display: block">Votre panier est vide.</h2>
+        </div>
+      </ng-container>
     </div>
   </div>
 </ng-container>

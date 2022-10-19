@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {map, Observable} from "rxjs";
+import {map, Observable, Subscription} from "rxjs";
 import {ArticleI} from "../../../core/interfaces/article-i";
 import {ArticlesService} from "../../services/articles.service";
 import {SizeService} from "../../services/size.service";
@@ -135,6 +135,8 @@ export class recapActive {
 })
 export class PageListBoutiqueComponent implements OnInit {
   public articles$?: Observable<ArticleI[] | any>;
+  private subs: Subscription[] = [];
+
 
   constructor(
     private articleService: ArticlesService,
@@ -147,12 +149,16 @@ export class PageListBoutiqueComponent implements OnInit {
     this.getAllArticles();
   }
 
+  ngOnDestroy() {
+    this.subs.forEach(value => value.unsubscribe())
+  }
+
   getSize(): void {
-    this.sizeServices.getAllSize().subscribe(sizelist => {
+    this.subs.push(this.sizeServices.getAllSize().subscribe(sizelist => {
       for (let i = 0; i < sizelist.length; i++) {
         sizePossibility.addSize(new sizePossibility(sizelist[i]["sizeExiste"]));
       }
-    });
+    }));
   }
 
   getAllArticles(): void {
@@ -188,17 +194,18 @@ export class PageListBoutiqueComponent implements OnInit {
         cart.addCart(ref, sizeSelect, quantite)
       }
       this.resetCard(e);
-      for (let i = 0; i < cart.getAllCart().length; i++) {
-        this.getArticleToRecap(cart.getAllCart()[i].id, cart.getAllCart()[i].quantite, cart.getAllCart()[i].taille)
+      const allCart = cart.getAllCart();
+      for (let i = 0; i < allCart.length; i++) {
+        this.getArticleToRecap(allCart[i].id, allCart[i].quantite, allCart[i].taille)
       }
     }
 
   }
 
   getArticleToRecap(id: number, quantite: number, size: string): void {
-    this.articleService.getArticleById(id).subscribe(article => {
+    this.subs.push(this.articleService.getArticleById(id).subscribe(article => {
       articleTransfere.pushToArray(new articleTransfere(article.id, article.name, article.prix, quantite, size))
-    });
+    }));
   };
 
   resetCard(e: any) {
@@ -232,10 +239,11 @@ export class PageListBoutiqueComponent implements OnInit {
   }
 
   cartToRecap() {
-    // for (let i = 0; i < cart.getAllCart().length; i++) {
-    //   this.getArticleToRecap(cart.getAllCart()[i].id, cart.getAllCart()[i].quantite, cart.getAllCart()[i].taille)
-    // }
-    recapActive.setActiveRecap();
+    this.switchActivePageRecap()
+  }
+
+  switchActivePageRecap(): void {
+    recapActive.setActiveRecap()
   }
 
   getBoolActiveRecap(): boolean {
