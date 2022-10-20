@@ -17,8 +17,8 @@ export class PartenairesService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getAllPartenaire(): Observable<PartenaireI[]> | undefined {
-    let observable: Observable<PartenaireI[]> | undefined;
+  getAllPartenaire(): Observable<PartenaireI[]> {
+    let observable: Observable<PartenaireI[]>;
     if (this.cache) {
       observable = of(this.cache);
     } else if (this.cachedObservablePartenaire$) {

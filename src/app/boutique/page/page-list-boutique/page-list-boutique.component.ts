@@ -223,7 +223,7 @@ export class PageListBoutiqueComponent implements OnInit {
 
 
   getArticleToRecap(id: number, quantite: number, size: string): void {
-    let obsSingleArticle: ArticleI | null = this.articleService.getArticleById(id);
+    let obsSingleArticle: ArticleI | undefined = this.articleService.getArticleById(id);
     if (obsSingleArticle) {
       prixTotal.calculPrix(obsSingleArticle.prix, quantite);
       articleTransfere.pushToArray(new articleTransfere(obsSingleArticle.id, obsSingleArticle.name, obsSingleArticle.prix, quantite, size))
