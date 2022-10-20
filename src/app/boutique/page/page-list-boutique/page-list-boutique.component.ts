@@ -161,7 +161,7 @@ export class PageListBoutiqueComponent implements OnInit {
 
   constructor(
     private articleService: ArticlesService,
-    private sizeServices: SizeService
+    private sizeServices: SizeService,
   ) {
   }
 
@@ -274,6 +274,10 @@ export class PageListBoutiqueComponent implements OnInit {
 
   getBoolActiveRecap(): boolean {
     return recapActive.getActiveRecap()
+  }
+
+  getFormat(blob: string): string {
+    return atob(blob).substring(3);
   }
 
 }
