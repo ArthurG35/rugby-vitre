@@ -4,12 +4,13 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
-import {EquipeModule} from "./equipe/equipe.module";
 import {PartenaireModule} from "./partenaire/partenaire.module";
 import {BoutiqueModule} from "./boutique/boutique.module";
-import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {EquipeModule} from "./equipe/equipe.module";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
     CommonModule,
