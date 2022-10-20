@@ -1,7 +1,7 @@
 export interface ArticleI {
   id: number,
   name: string,
-  path: string,
+  image: string,
   prix: number,
   sizeShopIds: number[] | null
 }
