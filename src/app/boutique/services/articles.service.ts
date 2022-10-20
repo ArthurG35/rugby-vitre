@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {finalize, Observable, of, share, tap} from "rxjs";
+import {Observable, of, share, tap} from "rxjs";
 import {ArticleI} from "../../core/interfaces/article-i";
 
 @Injectable({
@@ -18,8 +18,8 @@ export class ArticlesService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getAllArticle(): Observable<ArticleI[]> | null {
-    let observable: Observable<ArticleI[]> | null;
+  getAllArticle(): Observable<ArticleI[]> {
+    let observable: Observable<ArticleI[]>;
     if (this.cache) {
       observable = of(this.cache);
     } else if (this.cachedObservableArticle$) {
@@ -27,15 +27,14 @@ export class ArticlesService {
     } else {
       this.cachedObservableArticle$ = this.httpClient.get<ArticleI[]>(this.url).pipe(
         tap(res => this.cache = res),
-        share(),
-        finalize(() => this.cachedObservableArticle$ = null)
+        share()
       );
       observable = this.cachedObservableArticle$
     }
     return observable
   }
 
-  getArticleById(id: number): ArticleI | null {
+  getArticleById(id: number): ArticleI | undefined {
     if (this.cache) {
       for (let i = 0; i < this.cache?.length; i++) {
         if (this.cache[i].id == id) {
@@ -43,7 +42,7 @@ export class ArticlesService {
         }
       }
     }
-    return null
+    return undefined
 
   }
 

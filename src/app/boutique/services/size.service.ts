@@ -16,8 +16,8 @@ export class SizeService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getAllSize(): Observable<SizeI[]> | null {
-    let observable: Observable<SizeI[]> | null;
+  getAllSize(): Observable<SizeI[]> {
+    let observable: Observable<SizeI[]>;
     if (this.cache) {
       observable = of(this.cache);
     } else if (this.cachedObservableSize$) {

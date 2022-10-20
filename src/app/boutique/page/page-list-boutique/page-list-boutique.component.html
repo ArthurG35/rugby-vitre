@@ -9,7 +9,8 @@
       <div class="card">
         <div class="name">{{article.name}}</div>
         <div class="image">
-          <img alt="img" src="assets/images/boutique/images4.jpg">
+          <img
+            alt="Img Produit" src='data:image/png;base64,{{getFormat(article.path)}}'/>
         </div>
         <div class="pricebox clearfix">
           <div class="one-third no-border">
@@ -70,7 +71,7 @@
             </tbody>
           </table>
         </div>
-        <h3>Montant total: {{getPrixTotalCommande()}}€ | Article Total: {{getCountElement()}}</h3>
+        <h3>Montant total: {{getPrixTotalCommande().toFixed(2)}}€ | Article Total: {{getCountElement()}}</h3>
       </ng-container>
       <ng-container *ngIf="getCountElement() < 1">
         <div class="cartIsVoid">
