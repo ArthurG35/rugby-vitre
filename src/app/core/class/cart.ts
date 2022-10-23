@@ -12,13 +12,19 @@ export class Cart {
   }
 
   static addCart(ref: number, sizeSelect: string, quantite: number): void {
-    if (this.cartArray.findIndex(obj => obj.id === ref) != -1 && this.cartArray.findIndex(obj => obj.taille === sizeSelect) != -1) {
-      for (let i = 0; i < this.cartArray.length; i++) {
-        if (this.cartArray[i].id == ref && this.cartArray[i].taille == sizeSelect) {
-          this.cartArray[i].quantite = Number(this.cartArray[i].quantite) + Number(quantite);
+    let existe: boolean = false;
+    let index: number = -1;
+    for (let i = 0; i < this.cartArray.length; i++) {
+      if (this.cartArray[i].id === ref) {
+        if (this.cartArray[i].taille === sizeSelect) {
+          existe = true;
+          index = i;
+          break;
         }
       }
-
+    }
+    if (existe) {
+      this.cartArray[index].quantite = Number(this.cartArray[index].quantite) + Number(quantite);
     } else {
       this.cartArray.push(new Cart(ref, sizeSelect, quantite));
     }
