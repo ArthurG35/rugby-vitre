@@ -4,150 +4,29 @@ import {ArticleI} from "../../../core/interfaces/article-i";
 import {ArticlesService} from "../../services/articles.service";
 import {SizeService} from "../../services/size.service";
 import {SizeI} from "../../../core/interfaces/size-i";
+import {ArticleTransfere} from "../../../core/class/article-transfere";
+import {Cart} from "../../../core/class/cart";
+import {SizePossibility} from "../../../core/class/size-possibility";
+import {PrixTotal} from "../../../core/class/prix-total";
+import {RecapActive} from "../../../core/class/recap-active";
 
-export class cart {
-  private static cartArray: cart[] = [];
-  private static elementInCart = 0;
-  public id: number;
-  public taille: string;
-  public quantite: number;
-
-  constructor(id: number, taille: string, quantite: number) {
-    this.id = id;
-    this.taille = taille;
-    this.quantite = quantite;
-  }
-
-  static addCart(ref: number, sizeSelect: string, quantite: number): void {
-    if (cart.cartArray.findIndex(obj => obj.id === ref) != -1 && cart.cartArray.findIndex(obj => obj.taille === sizeSelect) != -1) {
-      let index = -1;
-      for (let i = 0; i < cart.cartArray.length; i++) {
-        if (cart.cartArray[i].id === ref) {
-          index = i
-        }
-      }
-      cart.cartArray[index].quantite = Number(cart.cartArray[index].quantite) + Number(quantite);
-    } else {
-      this.cartArray.push(new cart(ref, sizeSelect, quantite));
-    }
-    cart.countsElement()
-    articleTransfere.resetArticleTransfere();
-  }
-
-  static getCount(): number {
-    return cart.elementInCart;
-  }
-
-  static getAllCart(): cart[] {
-    return cart.cartArray
-  }
-
-  private static countsElement(): void {
-    let _elementCounts = 0;
-    for (let i = 0; i < cart.cartArray.length; i++) {
-      _elementCounts += Number(cart.cartArray[i].quantite)
-    }
-    cart.elementInCart = _elementCounts;
-  }
-}
-
-
-export class articleTransfere {
-
-  private static recapCommande: articleTransfere[] = []
-  public quantite: number;
-  public name: string;
-  public prix: number;
-  public size: string;
-  private id: number;
-
-  constructor(id: number, name: string, prix: number, quantite: number, size: string) {
-    this.id = id;
-    this.name = name;
-    this.prix = prix;
-    this.quantite = quantite
-    this.size = size
-  }
-
-  static resetArticleTransfere(): void {
-    articleTransfere.recapCommande = [];
-  }
-
-  static pushToArray(article: articleTransfere): void {
-    articleTransfere.recapCommande.push(article);
-  }
-
-  static getRecap(): articleTransfere[] {
-    return articleTransfere.recapCommande
-  }
-
-}
-
-export class sizePossibility {
-  private static sizeArray: sizePossibility[] = [];
-  public size: string;
-
-  constructor(size: string) {
-    this.size = size;
-  }
-
-  static addSize(size: sizePossibility): void {
-    this.sizeArray.push(size);
-  }
-
-  static checkSizeExist(size: any): number {
-    for (let i = 0; i < sizePossibility.sizeArray.length; i++) {
-      if (sizePossibility.sizeArray[i].size === size) {
-        return i
-      }
-    }
-    return -1
-  }
-
-  static getSize(index: number): string {
-    return sizePossibility.sizeArray[index].size;
-  }
-
-}
-
-export class prixTotal {
-  private static prixTotal: number = 0;
-  private prix: number;
-
-  constructor(prix: number) {
-    this.prix = prix
-  }
-
-  static resetPrixTotal(): void {
-    prixTotal.prixTotal = 0
-  }
-
-  static calculPrix(prixAdd: number, multiple: number): void {
-    prixTotal.prixTotal = Number(prixTotal.prixTotal) + (Number(prixAdd) * multiple);
-  }
-
-  static getPrixTotal(): number {
-    return prixTotal.prixTotal;
-  }
-}
-
-export class recapActive {
-  private static active: boolean = false;
-  public active: boolean
-
-  constructor(active: boolean) {
-    this.active = active;
-  }
-
-  static getActiveRecap(): boolean {
-    return recapActive.active
-  }
-
-  static setActiveRecap(): void {
-    recapActive.active = !recapActive.active;
-  }
-
-}
+// export class recapActive {
+//   private static active: boolean = false;
+//   public active: boolean
+//
+//   constructor(active: boolean) {
+//     this.active = active;
+//   }
+//
+//   static getActiveRecap(): boolean {
+//     return recapActive.active
+//   }
+//
+//   static setActiveRecap(): void {
+//     recapActive.active = !recapActive.active;
+//   }
+//
+// }
 
 @Component({
   selector: 'app-page-list-boutique',
@@ -179,7 +58,7 @@ export class PageListBoutiqueComponent implements OnInit {
     if (ObsSize != null) {
       this.subs.push(ObsSize.subscribe(sizelist => {
         for (let i = 0; i < sizelist.length; i++) {
-          sizePossibility.addSize(new sizePossibility(sizelist[i]["sizeExiste"]));
+          SizePossibility.addSize(new SizePossibility(sizelist[i]["sizeExiste"]));
         }
       }));
     }
@@ -192,7 +71,7 @@ export class PageListBoutiqueComponent implements OnInit {
   getChange(e: any) {
     if (e.target != null) {
       const sizeSelected: string = e.target.value;
-      if (sizePossibility.checkSizeExist(sizeSelected) != -1) {
+      if (SizePossibility.checkSizeExist(sizeSelected) != -1) {
         if (e.path[1].children[2].type === "submit") {
           e.path[1].children[2].disabled = false;
         } else {
@@ -209,12 +88,13 @@ export class PageListBoutiqueComponent implements OnInit {
       const ref = e.target.getAttribute("data-article");
       const quantite = e.path[1].children[1].value;
       const sizeSelect = e.path[1].children[0].value;
-      if (sizePossibility.checkSizeExist(sizeSelect) != -1) {
-        cart.addCart(ref, sizeSelect, quantite)
+      if (SizePossibility.checkSizeExist(sizeSelect) != -1) {
+        Cart.addCart(ref, sizeSelect, quantite)
       }
       this.resetCard(e);
-      const allCart = cart.getAllCart();
-      prixTotal.resetPrixTotal();
+      ArticleTransfere.resetArticleTransfere();
+      const allCart = Cart.getAllCart();
+      PrixTotal.resetPrixTotal();
       for (let i = 0; i < allCart.length; i++) {
         this.getArticleToRecap(allCart[i].id, allCart[i].quantite, allCart[i].taille)
       }
@@ -225,13 +105,13 @@ export class PageListBoutiqueComponent implements OnInit {
   getArticleToRecap(id: number, quantite: number, size: string): void {
     let obsSingleArticle: ArticleI | undefined = this.articleService.getArticleById(id);
     if (obsSingleArticle) {
-      prixTotal.calculPrix(obsSingleArticle.prix, quantite);
-      articleTransfere.pushToArray(new articleTransfere(obsSingleArticle.id, obsSingleArticle.name, obsSingleArticle.prix, quantite, size))
+      PrixTotal.calculPrix(obsSingleArticle.prix, quantite);
+      ArticleTransfere.pushToArray(new ArticleTransfere(obsSingleArticle.id, obsSingleArticle.name, obsSingleArticle.prix, quantite, size))
     }
   };
 
   getPrixTotalCommande(): number {
-    return prixTotal.getPrixTotal();
+    return PrixTotal.getPrixTotal();
   }
 
   resetCard(e: any) {
@@ -245,23 +125,23 @@ export class PageListBoutiqueComponent implements OnInit {
   }
 
   public getAttribute(size: number): string {
-    return sizePossibility.checkSizeExist(size - 1) ? sizePossibility.getSize(size - 1) : 'Inconnu';
+    return SizePossibility.checkSizeExist(size - 1) ? SizePossibility.getSize(size - 1) : 'Inconnu';
   }
 
   checkSizeExist(size: string): boolean {
-    return sizePossibility.checkSizeExist(size) != -1
+    return SizePossibility.checkSizeExist(size) != -1
   }
 
   public getCountElement(): number {
-    return cart.getCount();
+    return Cart.getCount();
   }
 
-  getCart(): cart[] {
-    return cart.getAllCart();
+  getCart(): Cart[] {
+    return Cart.getAllCart();
   }
 
-  getRecapArticle(): articleTransfere[] {
-    return articleTransfere.getRecap();
+  getRecapArticle(): ArticleTransfere[] {
+    return ArticleTransfere.getRecap();
   }
 
   cartToRecap() {
@@ -269,11 +149,11 @@ export class PageListBoutiqueComponent implements OnInit {
   }
 
   switchActivePageRecap(): void {
-    recapActive.setActiveRecap()
+    RecapActive.setActiveRecap()
   }
 
   getBoolActiveRecap(): boolean {
-    return recapActive.getActiveRecap()
+    return RecapActive.getActiveRecap()
   }
 
   getFormat(blob: string): string {
