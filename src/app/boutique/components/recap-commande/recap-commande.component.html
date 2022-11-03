@@ -31,7 +31,9 @@
           </tbody>
         </table>
       </div>
-      <h3>Montant total: {{getPrixTotal().toFixed(2)}}€ | Article Total: {{articles.length}}</h3>
+      <div class="footerPage">
+        <h3>Montant total: {{getPrixTotal().toFixed(2)}}€ | Article Total: {{articles.length}}</h3>
+      </div>
     </ng-container>
     <ng-container *ngIf="articles.length < 1">
       <div class="cartIsVoid">

@@ -3,6 +3,7 @@ import {ArticleTransfere} from "../../../core/class/article-transfere";
 import {RecapActive} from "../../../core/class/recap-active";
 import {PrixTotal} from "../../../core/class/prix-total";
 
+
 @Component({
   selector: 'app-recap-commande',
   templateUrl: './recap-commande.component.html',
@@ -11,6 +12,7 @@ import {PrixTotal} from "../../../core/class/prix-total";
 
 
 export class RecapCommandeComponent implements OnInit {
+
 
   @Input()
   public initRecapCommande!: ArticleTransfere[];
@@ -24,7 +26,7 @@ export class RecapCommandeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
   ngOnChanges(changes: SimpleChanges) {
     this.articles = [];
     for (const propName in changes) {

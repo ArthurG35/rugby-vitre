@@ -10,24 +10,6 @@ import {SizePossibility} from "../../../core/class/size-possibility";
 import {PrixTotal} from "../../../core/class/prix-total";
 import {RecapActive} from "../../../core/class/recap-active";
 
-// export class recapActive {
-//   private static active: boolean = false;
-//   public active: boolean
-//
-//   constructor(active: boolean) {
-//     this.active = active;
-//   }
-//
-//   static getActiveRecap(): boolean {
-//     return recapActive.active
-//   }
-//
-//   static setActiveRecap(): void {
-//     recapActive.active = !recapActive.active;
-//   }
-//
-// }
-
 @Component({
   selector: 'app-page-list-boutique',
   templateUrl: './page-list-boutique.component.html',
