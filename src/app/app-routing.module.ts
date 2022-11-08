@@ -12,13 +12,6 @@ import {SizeResolver} from "./resolvers/size.resolver";
 import {PageLoginComponent} from "./login/page/page-login/page-login.component";
 
 const routes: Routes = [
-
-  // {path: '', component: HomeComponent},
-  // {path: 'equipes', component: PageListEquipeComponent, resolve: {equipe: ListEquipeResolver}},
-  // {path: 'partenaires', component: PageListPartenaireComponent, resolve: {partenaire: PartenaireResolver}},
-  // {path: 'boutique', component: PageListBoutiqueComponent, resolve: {article: ArticleResolver, size: SizeResolver}},
-  // {path: 'checkout', component: CheckoutComponent},
-
   {
     path: '',
     component: LayoutComponent,
