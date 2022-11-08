@@ -1,10 +1,7 @@
 <header class="fixed-top">
-  <ng-content select=".tr-header"></ng-content>
+  <app-header class="tr-header"></app-header>
 </header>
-<body>
-<ng-content select=".tr-widget-score"></ng-content>
-<ng-content select=".tr-card-player"></ng-content>
-</body>
+<router-outlet></router-outlet>
 <footer>
-  <ng-content select=".tr-footer"></ng-content>
+  <app-footer class="tr-footer"></app-footer>
 </footer>

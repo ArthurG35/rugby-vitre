@@ -1,0 +1,95 @@
+@import "src/assets/styling/mediaqueries";
+
+main {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background: linear-gradient(0deg, hsla(0, 0%, 0%, 0.3), hsla(0, 0%, 0%, 0.3)), url("~src/assets/images/background/header-background.jpg") no-repeat;
+  display: grid;
+  place-items: center;
+  background-position: center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+
+  .wrapper {
+    width: 30vw;
+    height: 40vw;
+    background: rgb(255 255 255 / 10%);
+    backdrop-filter: blur(0.7rem);
+    border: 0.01rem solid #2ecc71;
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .title {
+      h2 {
+        text-align: center;
+        font-size: 3vw;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      label {
+        font-size: 1vw;
+      }
+
+      input {
+        background: #ffffff00;
+        border: 0;
+        border-bottom: 1px #2ecc71 solid;
+        outline: 0;
+        margin-bottom: 30px;
+        color: #ffffff;
+        font-size: 1.5vw;
+      }
+
+      button {
+        color: #2ecc71;
+        border: none;
+        padding: 2px;
+        outline: 0;
+        cursor: pointer;
+        font-size: 1.5vw;
+      }
+    }
+  }
+}
+
+@include xs {
+  main {
+    .wrapper {
+      height: 100vh;
+      width: 100vw;
+      border: none;
+
+      .title {
+        h2 {
+          font-size: 10vw;
+        }
+      }
+
+      .form-group {
+
+        label {
+          font-size: 3.5vw;
+        }
+
+        input {
+          font-size: 4vw;
+        }
+
+        button {
+          font-size: 3.5vw;
+        }
+      }
+    }
+  }
+}
+
