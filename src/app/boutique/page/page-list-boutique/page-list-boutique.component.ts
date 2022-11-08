@@ -141,7 +141,7 @@ export class PageListBoutiqueComponent implements OnInit {
   getFormat(blob: string): string {
     console.log(blob);
     console.log(atob(blob));
-    return atob(blob).substring(3);
+    return atob(blob).substring(1);
   }
 
 }
