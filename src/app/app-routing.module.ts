@@ -11,6 +11,8 @@ import {PartenaireResolver} from "./resolvers/partenaire.resolver";
 import {SizeResolver} from "./resolvers/size.resolver";
 import {PageLoginComponent} from "./login/page/page-login/page-login.component";
 
+
+//LazyLoading : https://angular.io/guide/lazy-loading-ngmodules
 const routes: Routes = [
   {
     path: '',
