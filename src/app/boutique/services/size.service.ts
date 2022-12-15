@@ -36,4 +36,5 @@ export class SizeService {
   getSizeById(id: number): Observable<SizeI> {
     return this.httpClient.get<SizeI>(`${this.url}/${id}`);
   }
+
 }

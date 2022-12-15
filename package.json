@@ -1,6 +1,6 @@
 {
   "name": "rugby-vitre",
-  "version": "0.0.1",
+  "version": "0.0.1 RC2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",

@@ -11,11 +11,14 @@ import {BoutiqueModule} from "./boutique/boutique.module";
 import {EquipeModule} from "./equipe/equipe.module";
 import {UiModule} from "./ui/ui.module";
 import {PageLoginComponent} from './login/page/page-login/page-login.component';
+import {DashboardComponent} from "./dashboard/page/dashboard/dashboard.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     PageLoginComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import {PageLoginComponent} from './login/page/page-login/page-login.component';
     PartenaireModule,
     BoutiqueModule,
     FontAwesomeModule,
-    UiModule
+    UiModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -27,7 +27,6 @@ export class PageListBoutiqueComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('PageListBoutiqueComponent');
     this.getSize();
     this.getAllArticles();
   }
@@ -142,5 +141,6 @@ export class PageListBoutiqueComponent implements OnInit {
   getFormat(blob: string): string {
     return atob(blob);
   }
+
 
 }
