@@ -4,6 +4,8 @@ import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {LayoutComponent} from "./ui/components/layout/layout.component";
 import {DashboardLayoutComponent} from "./ui/components/dashboard-layout/dashboard-layout.component";
 import {AuthGuard} from "./core/guards/auth.guard";
+import {AuthInterceptorService} from "./core/services/auth-interceptor.service";
+import {AuthentificationService} from "./core/services/authentification.service";
 
 
 //LazyLoading : https://angular.io/guide/lazy-loading-ngmodules
@@ -47,7 +49,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule],
-  providers: []
+  providers: [AuthGuard, AuthInterceptorService, AuthentificationService]
 })
 export class AppRoutingModule {
 }
