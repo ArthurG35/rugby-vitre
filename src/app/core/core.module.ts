@@ -8,8 +8,8 @@ import {FooterComponent} from './components/footer/footer.component';
 import {WidgetComponent} from './components/widget/widget.component';
 import {BrowserModule} from "@angular/platform-browser";
 import {LazyImgDirective} from "./directives/lazy-img-directive.directive";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptorService} from "./services/auth-interceptor.service";
-import {HTTP_INTERCEPTORS} from "@angular/common/http";
 
 
 @NgModule({
@@ -25,6 +25,7 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
     CommonModule,
     RouterModule,
     BrowserModule,
+    HttpClientModule
   ],
   exports: [
     HeaderComponent,

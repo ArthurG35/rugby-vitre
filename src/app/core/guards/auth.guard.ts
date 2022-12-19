@@ -16,10 +16,10 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log(this.authService.getConnectedUser$().pipe(map(connected => console.log(connected !== null))));
+    console.log("AuthGuard#canActivate called");
     return this.authService.getConnectedUser$()
       .pipe(
-        map(connected => connected !== null ? true : this.router.parseUrl('/login'))
+        map(connected => connected ? true : this.router.parseUrl('/login'))
       );
   }
 

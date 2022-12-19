@@ -10,5 +10,9 @@
            [routerLink]="['/', 'partenaires']">Partenaires</a></li>
     <li><a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['link-Activate']"
            [routerLink]="['/', 'boutique']">Boutique</a></li>
+    <ng-container *ngIf="(allowed$|async)">
+      <li><a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['link-Activate']"
+             [routerLink]="['/', 'dashboard']">Dashboard</a></li>
+    </ng-container>
   </ul>
 </nav>

@@ -11,7 +11,7 @@ import {AuthentificationService} from "../../../core/services/authentification.s
 })
 export class PageLoginComponent implements OnInit {
 
-  public initUser: UserI = {'id': 0, 'username': '', 'password': ''};
+  public initUser: UserI = {'id': 0, 'username': '', 'password': '', 'grants': ''};
 
   public loginForm!: FormGroup;
 

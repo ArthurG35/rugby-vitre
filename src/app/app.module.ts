@@ -4,36 +4,27 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HttpClientModule} from "@angular/common/http";
-import {CommonModule} from "@angular/common";
-import {PartenaireModule} from "./partenaire/partenaire.module";
-import {BoutiqueModule} from "./boutique/boutique.module";
-import {EquipeModule} from "./equipe/equipe.module";
 import {UiModule} from "./ui/ui.module";
-import {PageLoginComponent} from './login/page/page-login/page-login.component';
-import {DashboardComponent} from "./dashboard/page/dashboard/dashboard.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {CoreModule} from "./core/core.module";
+import {AuthInterceptorService} from "./core/services/auth-interceptor.service";
+import {AuthGuard} from "./core/guards/auth.guard";
+import {AuthentificationService} from "./core/services/authentification.service";
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageLoginComponent,
-    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
-    CommonModule,
-    EquipeModule,
-    PartenaireModule,
-    BoutiqueModule,
+    CoreModule,
     FontAwesomeModule,
     UiModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard, AuthentificationService, AuthInterceptorService],
   bootstrap: [AppComponent],
   exports: [],
 })

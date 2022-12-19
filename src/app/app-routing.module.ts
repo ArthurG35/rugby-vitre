@@ -2,10 +2,9 @@ import {NgModule} from '@angular/core';
 import {HomeComponent} from "./core/components/home/home.component";
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {LayoutComponent} from "./ui/components/layout/layout.component";
-import {PageLoginComponent} from "./login/page/page-login/page-login.component";
 import {DashboardLayoutComponent} from "./ui/components/dashboard-layout/dashboard-layout.component";
-import {DashboardComponent} from "./dashboard/page/dashboard/dashboard.component";
 import {AuthGuard} from "./core/guards/auth.guard";
+import {AuthInterceptorService} from "./core/services/auth-interceptor.service";
 
 
 //LazyLoading : https://angular.io/guide/lazy-loading-ngmodules
@@ -29,20 +28,27 @@ const routes: Routes = [
       }
     ]
   },
-  {path: 'login', component: PageLoginComponent},
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then(module_ => module_.LoginModule)
+  },
   {
     canActivate: [AuthGuard],
     path: 'dashboard',
     component: DashboardLayoutComponent,
     children: [
-      {path: '', component: DashboardComponent, pathMatch: 'full'},
+      {
+        path: '',
+        loadChildren: () => import('./dashboard/dashboard.module').then(module_ => module_.DashboardModule),
+      },
     ]
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard, AuthInterceptorService]
 })
 export class AppRoutingModule {
 }

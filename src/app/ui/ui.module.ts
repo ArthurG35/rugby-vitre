@@ -2,7 +2,8 @@ import {NgModule} from '@angular/core';
 import {LayoutComponent} from './components/layout/layout.component';
 import {RouterOutlet} from "@angular/router";
 import {CoreModule} from "../core/core.module";
-import { DashboardLayoutComponent } from './components/dashboard-layout/dashboard-layout.component';
+import {DashboardLayoutComponent} from './components/dashboard-layout/dashboard-layout.component';
+import {AuthAssetsModule} from "../authAssets/auth-assets.module";
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { DashboardLayoutComponent } from './components/dashboard-layout/dashboar
   imports: [
     RouterOutlet,
     CoreModule,
+    AuthAssetsModule
   ],
   exports: [
     LayoutComponent

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-layout',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard-layout.component.scss']
 })
 export class DashboardLayoutComponent {
+
+  constructor() {
+  }
+
+  ngOnInit(): void {
+  }
 
 }

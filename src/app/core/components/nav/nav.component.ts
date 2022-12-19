@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {map, Observable} from "rxjs";
+import {AuthentificationService} from "../../services/authentification.service";
 
 @Component({
   selector: 'app-nav',
@@ -7,11 +9,17 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() {
+  public allowed$!: Observable<boolean>;
+
+  constructor(private authService: AuthentificationService) {
   }
 
   ngOnInit(): void {
+    this.isAllowed();
+  }
 
+  isAllowed(): void {
+    this.allowed$ = this.authService.getConnectedUser$().pipe(map(connected => connected ? true : false));
   }
 
   test(active: boolean): void {
