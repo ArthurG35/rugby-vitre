@@ -3,6 +3,7 @@ import {HomeComponent} from "./core/components/home/home.component";
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {LayoutComponent} from "./ui/components/layout/layout.component";
 import {DashboardLayoutComponent} from "./ui/components/dashboard-layout/dashboard-layout.component";
+import {AuthGuard} from "./core/guards/auth.guard";
 
 
 //LazyLoading : https://angular.io/guide/lazy-loading-ngmodules
@@ -31,6 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then(module_ => module_.LoginModule)
   },
   {
+    canActivate: [AuthGuard],
     path: 'dashboard',
     component: DashboardLayoutComponent,
     children: [
