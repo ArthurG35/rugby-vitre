@@ -4,6 +4,7 @@ import {BehaviorSubject, finalize, Observable, tap} from "rxjs";
 import {UserI} from "../interfaces/user-i";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {LocalService} from "./local.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,13 @@ export class AuthentificationService {
   private url: string = `${environment.apiUrl}/users`;
   private connectedUser$ = new BehaviorSubject<UserI | null>(null);
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private localStore: LocalService) {
   }
 
   public getConnectedUser$(): Observable<UserI | null> {
     if (sessionStorage.getItem('logUser') != null) {
-      this.connectedUser$.next(JSON.parse(sessionStorage.getItem('logUser') || '{}'));
+     let session = this.localStore.getData('id')
+      this.connectedUser$.next(JSON.parse(session || '{}'));
     }
     return this.connectedUser$.asObservable();
   }
@@ -35,7 +37,8 @@ export class AuthentificationService {
 
     return this.http.get<UserI>(`${this.url}/login`, {headers, params}).pipe(
       tap((data: UserI) => {
-        sessionStorage.setItem('logUser', JSON.stringify(data));
+        this.localStore.clearData();
+        this.localStore.saveData('id', JSON.stringify(data));
         this.connectedUser$.next(this.mapUserI(data));
       })
     );
