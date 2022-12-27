@@ -2,11 +2,13 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {NavLoginComponent} from './nav-login/nav-login.component';
 import {RouterLink, RouterLinkActive} from "@angular/router";
+import { BoardComponent } from './components/board/board.component';
 
 
 @NgModule({
   declarations: [
-    NavLoginComponent
+    NavLoginComponent,
+    BoardComponent
   ],
   imports: [
     CommonModule,
@@ -14,7 +16,8 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
     RouterLink
   ],
   exports: [
-    NavLoginComponent
+    NavLoginComponent,
+    BoardComponent
   ]
 })
 export class AuthAssetsModule {

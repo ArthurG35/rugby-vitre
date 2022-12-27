@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 })
 export class AuthentificationService {
 
+
   private url: string = `${environment.apiUrl}/users`;
   private connectedUser$ = new BehaviorSubject<UserI | null>(null);
 
@@ -17,8 +18,9 @@ export class AuthentificationService {
   }
 
   public getConnectedUser$(): Observable<UserI | null> {
-    console.log("IS CALLED")
-    console.log(this.connectedUser$)
+    if (sessionStorage.getItem('logUser') != null) {
+      this.connectedUser$.next(JSON.parse(sessionStorage.getItem('logUser') || '{}'));
+    }
     return this.connectedUser$.asObservable();
   }
 
@@ -33,7 +35,7 @@ export class AuthentificationService {
 
     return this.http.get<UserI>(`${this.url}/login`, {headers, params}).pipe(
       tap((data: UserI) => {
-        localStorage.setItem('logUser', JSON.stringify(data));
+        sessionStorage.setItem('logUser', JSON.stringify(data));
         this.connectedUser$.next(this.mapUserI(data));
       })
     );
@@ -42,8 +44,9 @@ export class AuthentificationService {
   logout() {
     this.http.post(`${environment.apiUrl}/logout`, {}).pipe(
       finalize(() => {
+        sessionStorage.clear();
         this.connectedUser$.next(null);
-        this.router.navigateByUrl(`/login`);
+        this.router.navigateByUrl(`/`);
       })).subscribe();
   }
 

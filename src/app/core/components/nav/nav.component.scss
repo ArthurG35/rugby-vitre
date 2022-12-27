@@ -33,10 +33,6 @@ nav {
         margin: 0 15px;
         font-weight: bold;
 
-        &:hover {
-          color: #ecf0f1;
-        }
-
         &::before, .selected::before {
           content: "";
           position: absolute;

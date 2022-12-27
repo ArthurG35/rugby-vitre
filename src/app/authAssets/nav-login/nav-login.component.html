@@ -1,6 +1,26 @@
-<nav>
-  <ul class="nav" id="id-nav">
-    <li><a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['link-Activate']"
-           [routerLink]="['/']">Home</a></li>
+<button (click)="switchMenu()" class="c-hamburger c-hamburger--htx" id="buttonMenu">
+  <span>toggle menu</span>
+</button>
+<nav class="sub-menu open" id="menu">
+  <ul class="list-unstyled">
+    <li>
+      <a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['link-Activate']"
+         [routerLink]="['/', 'dashboard', 'equipes']">Equipes</a>
+    </li>
+    <li>
+      <a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['link-Activate']"
+         [routerLink]="['/', 'dashboard', 'partenaires']">Partenaires</a>
+    </li>
+    <li>
+      <a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['link-Activate']"
+         [routerLink]="['/', 'dashboard', 'boutique']">Boutique</a>
+    </li>
+    <li>
+      <a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['link-Activate']"
+         [routerLink]="['/', 'dashboard', 'utilisateur']">Utilisateurs</a>
+    </li>
   </ul>
+  <div class="logout-menu">
+    <a (click)="logout()">Déconnection</a>
+  </div>
 </nav>
