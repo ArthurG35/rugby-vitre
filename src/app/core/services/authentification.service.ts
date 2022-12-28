@@ -16,11 +16,12 @@ export class AuthentificationService {
   private connectedUser$ = new BehaviorSubject<UserI | null>(null);
 
   constructor(private http: HttpClient, private router: Router, private localStore: LocalService) {
+
   }
 
   public getConnectedUser$(): Observable<UserI | null> {
-    if (sessionStorage.getItem('logUser') != null) {
-     let session = this.localStore.getData('id')
+    if (this.localStore.getData('userLogger') != null) {
+      let session = this.localStore.getData('userLogger')
       this.connectedUser$.next(JSON.parse(session || '{}'));
     }
     return this.connectedUser$.asObservable();
@@ -38,7 +39,7 @@ export class AuthentificationService {
     return this.http.get<UserI>(`${this.url}/login`, {headers, params}).pipe(
       tap((data: UserI) => {
         this.localStore.clearData();
-        this.localStore.saveData('id', JSON.stringify(data));
+        this.localStore.saveData('userLogger', JSON.stringify(data));
         this.connectedUser$.next(this.mapUserI(data));
       })
     );
@@ -47,7 +48,7 @@ export class AuthentificationService {
   logout() {
     this.http.post(`${environment.apiUrl}/logout`, {}).pipe(
       finalize(() => {
-        sessionStorage.clear();
+        this.localStore.clearData();
         this.connectedUser$.next(null);
         this.router.navigateByUrl(`/`);
       })).subscribe();

@@ -1,30 +1,38 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import * as CryptoJS from 'crypto-js';
+import {CookiesService} from "./cookies.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalService {
 
-  key = "123";
+  private key = "154849484089404894564978489489456408904";
 
-  constructor() { }
+  constructor(private coockieService: CookiesService) {
+  }
 
   public saveData(key: string, value: string) {
+    if (!this.coockieService.checkCookieUser()) {
+      this.key = this.coockieService.generateId();
+      this.coockieService.setCookieUser(this.key);
+    }
     localStorage.setItem(key, this.encrypt(value));
-
   }
 
   public getData(key: string) {
-    let data = localStorage.getItem(key)|| "";
-    return this.decrypt(data);
-  }
-  public removeData(key: string) {
-    localStorage.removeItem(key);
+    if (this.coockieService.checkCookieUser()) {
+      this.key = this.coockieService.getCookieUser();
+      let data = localStorage.getItem(key) || "";
+      return this.decrypt(data);
+    } else {
+      return null;
+    }
   }
 
   public clearData() {
     localStorage.clear();
+    this.coockieService.deleteAllCookiesUser();
   }
 
   private encrypt(txt: string): string {
