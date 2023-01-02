@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit} from '@angular/core';
 import {AuthentificationService} from "../../core/services/authentification.service";
 
 @Component({
@@ -10,9 +10,20 @@ export class NavLoginComponent implements OnInit {
 
   public open: boolean = false;
 
-  constructor(private authService: AuthentificationService) {
+  constructor(private authService: AuthentificationService, private eRef: ElementRef) {
   }
 
+  @HostListener('document:click', ['$event'])
+  clickout(event: { target: any; }) {
+    if (!this.eRef.nativeElement.contains(event.target) && this.open) {
+      this.closeMenu();
+    }
+  }
+
+  public closeMenu() {
+    this.open = false;
+    this.menuFonction();
+  }
 
   ngOnInit(): void {
   }
@@ -23,6 +34,7 @@ export class NavLoginComponent implements OnInit {
   }
 
   public logout() {
+    this.closeMenu();
     this.authService.logout();
   }
 

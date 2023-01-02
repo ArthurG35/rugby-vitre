@@ -28,15 +28,21 @@
       &--top {
         font-size: 24px;
         font-weight: 700;
-        letter-spacing: 6.5px;
+        letter-spacing: 1px;
       }
 
       &--bottom {
         font-size: 13px;
         font-weight: 500;
-        letter-spacing: 3.55px;
         opacity: .65;
         transform: translateY(-2px);
+      }
+
+      &--button {
+        margin-left: 25px;
+        padding: 0 5px;
+        background: white;
+        border: none;
       }
     }
 
@@ -63,7 +69,7 @@
 
   &__profile {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
     align-items: center;
     padding: 10px 30px 10px 10px;
     overflow: hidden;
@@ -104,6 +110,22 @@
       font-weight: 600;
       font-size: 13px;
       margin-left: 3px;
+    }
+  }
+
+  &__button {
+    margin-left: 25px;
+    padding: 0 5px;
+    background: white;
+    border: 1px solid #35d8ac;
+    font-size: 20px;
+    font-weight: 700;
+    color: #35d8ac;
+    cursor: pointer;
+
+    &:hover {
+      background: #35d8ac;
+      color: white;
     }
   }
 }

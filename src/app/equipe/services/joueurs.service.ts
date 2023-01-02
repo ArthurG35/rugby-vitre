@@ -40,4 +40,9 @@ export class JoueursService {
       );
     }
   }
+
+  updateJoueur(joueur: JoueurI): Observable<void> {
+    return this.httpClient.put<void>(this.url + '/' + joueur.id, joueur);
+  }
+
 }

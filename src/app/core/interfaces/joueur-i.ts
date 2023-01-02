@@ -5,4 +5,5 @@ export interface JoueurI {
   nom: string;
   placement: number;
   poste: string;
+  equipeId: number;
 }

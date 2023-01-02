@@ -31,8 +31,8 @@ export class LocalService {
   }
 
   public clearData() {
-    localStorage.clear();
     this.coockieService.deleteAllCookiesUser();
+    localStorage.clear();
   }
 
   private encrypt(txt: string): string {

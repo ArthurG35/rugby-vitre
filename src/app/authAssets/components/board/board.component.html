@@ -2,7 +2,7 @@
   <header>
 
     <svg class="leaderboard__icon" id="Layer_1" style="enable-background:new 0 0 511.999 511.999;"
-         version="1.1" viewBox="0 0 511.999 511.999" x="0px" xml:space="preserve"
+         viewBox="0 0 511.999 511.999" x="0px"
          xmlns="http://www.w3.org/2000/svg" y="0px">
       <g>
         <g>
@@ -41,107 +41,39 @@
       </g>
     </svg>
 
-    <h1 class="leaderboard__title"><span class="leaderboard__title--top">Forbes</span><span
-      class="leaderboard__title--bottom">Leaderboard</span></h1>
+    <h1 class="leaderboard__title">
+      <ng-template [ngIfElse]="noEquipe" [ngIf]="(equipe$ | async)?.length != 0 && (equipe$ | async)">
+        <select #equipe (change)="getChangeValue(equipe.value)" class="leaderboard__title--top">
+          <ng-container *ngFor="let equipe of equipe$ | async">
+            <option [defaultSelected]="equipe.id == 1" [value]="equipe.id">{{equipe.name}}</option>
+          </ng-container>
+        </select>
+
+        <button class="leaderboard__title--top leaderboard__title--button">Ajouter un joueur</button>
+      </ng-template>
+      <ng-template #noEquipe>
+        <span class="leaderboard__title--top">Aucune Équipe valide</span>
+      </ng-template>
+    </h1>
   </header>
-
-  <main class="leaderboard__profiles">
-    <article class="leaderboard__profile">
-      <img alt="Mark Zuckerberg" class="leaderboard__picture" src="https://randomuser.me/api/portraits/men/32.jpg">
-      <span class="leaderboard__name">Mark Zuckerberg</span>
-      <span class="leaderboard__value">35.7<span>B</span></span>
-    </article>
-
-    <article class="leaderboard__profile">
-      <img alt="Dustin Moskovitz" class="leaderboard__picture" src="https://randomuser.me/api/portraits/men/97.jpg">
-      <span class="leaderboard__name">Dustin Moskovitz</span>
-      <span class="leaderboard__value">9.9<span>B</span></span>
-    </article>
-
-    <article class="leaderboard__profile">
-      <img alt="Elizabeth Holmes" class="leaderboard__picture"
-           src="https://randomuser.me/api/portraits/women/17.jpg">
-      <span class="leaderboard__name">Elizabeth Holmes</span>
-      <span class="leaderboard__value">4.5<span>B</span></span>
-    </article>
-
-    <article class="leaderboard__profile">
-      <img alt="Evan Spiegel" class="leaderboard__picture" src="https://randomuser.me/api/portraits/men/37.jpg">
-      <span class="leaderboard__name">Evan Spiegel</span>
-      <span class="leaderboard__value">2.1<span>B</span></span>
-    </article>
-    <article class="leaderboard__profile">
-      <img alt="Mark Zuckerberg" class="leaderboard__picture" src="https://randomuser.me/api/portraits/men/32.jpg">
-      <span class="leaderboard__name">Mark Zuckerberg</span>
-      <span class="leaderboard__value">35.7<span>B</span></span>
-    </article>
-
-    <article class="leaderboard__profile">
-      <img alt="Dustin Moskovitz" class="leaderboard__picture" src="https://randomuser.me/api/portraits/men/97.jpg">
-      <span class="leaderboard__name">Dustin Moskovitz</span>
-      <span class="leaderboard__value">9.9<span>B</span></span>
-    </article>
-
-    <article class="leaderboard__profile">
-      <img alt="Elizabeth Holmes" class="leaderboard__picture"
-           src="https://randomuser.me/api/portraits/women/17.jpg">
-      <span class="leaderboard__name">Elizabeth Holmes</span>
-      <span class="leaderboard__value">4.5<span>B</span></span>
-    </article>
-
-    <article class="leaderboard__profile">
-      <img alt="Evan Spiegel" class="leaderboard__picture" src="https://randomuser.me/api/portraits/men/37.jpg">
-      <span class="leaderboard__name">Evan Spiegel</span>
-      <span class="leaderboard__value">2.1<span>B</span></span>
-    </article>
-    <article class="leaderboard__profile">
-      <img alt="Mark Zuckerberg" class="leaderboard__picture" src="https://randomuser.me/api/portraits/men/32.jpg">
-      <span class="leaderboard__name">Mark Zuckerberg</span>
-      <span class="leaderboard__value">35.7<span>B</span></span>
-    </article>
-
-    <article class="leaderboard__profile">
-      <img alt="Dustin Moskovitz" class="leaderboard__picture" src="https://randomuser.me/api/portraits/men/97.jpg">
-      <span class="leaderboard__name">Dustin Moskovitz</span>
-      <span class="leaderboard__value">9.9<span>B</span></span>
-    </article>
-
-    <article class="leaderboard__profile">
-      <img alt="Elizabeth Holmes" class="leaderboard__picture"
-           src="https://randomuser.me/api/portraits/women/17.jpg">
-      <span class="leaderboard__name">Elizabeth Holmes</span>
-      <span class="leaderboard__value">4.5<span>B</span></span>
-    </article>
-
-    <article class="leaderboard__profile">
-      <img alt="Evan Spiegel" class="leaderboard__picture" src="https://randomuser.me/api/portraits/men/37.jpg">
-      <span class="leaderboard__name">Evan Spiegel</span>
-      <span class="leaderboard__value">2.1<span>B</span></span>
-    </article>
-    <article class="leaderboard__profile">
-      <img alt="Mark Zuckerberg" class="leaderboard__picture" src="https://randomuser.me/api/portraits/men/32.jpg">
-      <span class="leaderboard__name">Mark Zuckerberg</span>
-      <span class="leaderboard__value">35.7<span>B</span></span>
-    </article>
-
-    <article class="leaderboard__profile">
-      <img alt="Dustin Moskovitz" class="leaderboard__picture" src="https://randomuser.me/api/portraits/men/97.jpg">
-      <span class="leaderboard__name">Dustin Moskovitz</span>
-      <span class="leaderboard__value">9.9<span>B</span></span>
-    </article>
-
-    <article class="leaderboard__profile">
-      <img alt="Elizabeth Holmes" class="leaderboard__picture"
-           src="https://randomuser.me/api/portraits/women/17.jpg">
-      <span class="leaderboard__name">Elizabeth Holmes</span>
-      <span class="leaderboard__value">4.5<span>B</span></span>
-    </article>
-
-    <article class="leaderboard__profile">
-      <img alt="Evan Spiegel" class="leaderboard__picture" src="https://randomuser.me/api/portraits/men/37.jpg">
-      <span class="leaderboard__name">Evan Spiegel</span>
-      <span class="leaderboard__value">2.1<span>B</span></span>
-    </article>
-
-  </main>
+  <ng-template [ngIfElse]="noJoueur" [ngIf]="(joueurs$ | async)?.length != 0 && (joueurs$ | async)">
+    <main class="leaderboard__profiles" id="listeJoueur">
+      <ng-container *ngFor="let joueur of (joueurs$ | async)">
+        <article [attr.data-row]="joueur.id" class="leaderboard__profile">
+          <img alt="Mark Zuckerberg" class="leaderboard__picture" src="https://randomuser.me/api/portraits/men/32.jpg">
+          <span class="leaderboard__name">{{joueur.prenom}} {{joueur.nom}}</span>
+          <span class="leaderboard__value">35.7<span>B</span></span>
+          <button (click)="removeJoueurFromEquipe(joueur)" *ngIf="joueur.equipeId != 1" class="leaderboard__button">
+            Supprimer de l'équipe
+          </button>
+        </article>
+      </ng-container>
+    </main>
+  </ng-template>
+  <ng-template #noJoueur>
+    <main class="leaderboard__profiles"
+          style="height: calc(100vh - 220px);align-content: center; justify-content: center;">
+      <h1>Aucun joueur disponible...</h1>
+    </main>
+  </ng-template>
 </div>

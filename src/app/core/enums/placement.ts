@@ -1,4 +1,5 @@
 export enum Placement {
+  'NULL',
   'NOM0',
   'NOM1',
   'NOM2',

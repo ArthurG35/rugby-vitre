@@ -4,19 +4,19 @@
 <nav class="sub-menu open" id="menu">
   <ul class="list-unstyled">
     <li>
-      <a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['link-Activate']"
+      <a (click)="closeMenu()" [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['link-Activate']"
          [routerLink]="['/', 'dashboard', 'equipes']">Equipes</a>
     </li>
     <li>
-      <a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['link-Activate']"
+      <a (click)="closeMenu()" [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['link-Activate']"
          [routerLink]="['/', 'dashboard', 'partenaires']">Partenaires</a>
     </li>
     <li>
-      <a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['link-Activate']"
+      <a (click)="closeMenu()" [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['link-Activate']"
          [routerLink]="['/', 'dashboard', 'boutique']">Boutique</a>
     </li>
     <li>
-      <a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['link-Activate']"
+      <a (click)="closeMenu()" [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['link-Activate']"
          [routerLink]="['/', 'dashboard', 'utilisateur']">Utilisateurs</a>
     </li>
   </ul>
